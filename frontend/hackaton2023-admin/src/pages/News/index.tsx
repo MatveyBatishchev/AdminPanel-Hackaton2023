@@ -1,24 +1,10 @@
 import React from 'react';
-import { List, Datagrid, TextField, DateField, EditButton, DeleteButton } from 'react-admin'
 
-interface props {
-    id: string;
-}
-
-const News = (props) => {
+const News = () => {
     return (
-        <List {...props}>
-            {
-                <Datagrid>
-                    <TextField source='id' />
-                    <TextField source='name' />
-                    <TextField source='description' />
-                    <EditButton basePath='/news'/>
-                    <DeleteButton basePath='/news'/>
-                </Datagrid>
-            }
+        <div>
 
-        </List>
+        </div>
     );
 };
 
