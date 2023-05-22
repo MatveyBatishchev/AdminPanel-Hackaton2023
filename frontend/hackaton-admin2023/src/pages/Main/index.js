@@ -45,7 +45,7 @@ const Main = () => {
                     <div className={classes['second-row']}>
                         {articles && articles.map(article => {
                             return (
-                                <CardComponent id={article.id} name={article.name} description={article.description}
+                                <CardComponent id={article.id} key={article.id} name={article.name} description={article.description}
                                                articleType={article.articleType.name} createdAt={article.createdAt}/>
                             )
                         })}

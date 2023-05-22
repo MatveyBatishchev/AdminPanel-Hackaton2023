@@ -1,18 +1,22 @@
 import React, {useEffect, useRef, useState} from 'react';
 import EditorJS from "@editorjs/editorjs";
 import Header from "@editorjs/header";
+import Paragraph from "@editorjs/paragraph";
 import classes from './style.module.scss';
 import axios from "axios";
-import {FormControl, InputLabel, MenuItem, Select} from "@mui/material";
+import ImageTool from '@editorjs/image';
 
 const CreateArticle = () => {
 
     const [message, setMessage] = useState('');
     const [type, setType] = useState(null);
     const ejInstance = useRef();
+    const [allTypes, setAllTypes] = useState(null);
+    const [content, setContent] = useState(null);
+
+    const change = useRef();
 
     const handleChange = event => {
-
         setMessage(event.target.value);
         console.log('value is:', event.target.value);
     };
@@ -22,39 +26,14 @@ const CreateArticle = () => {
         console.log('type is:', event.target.value);
     }
 
-    // const initEditor = () => {
-    //     const editor = new EditorJS({
-    //         holder: 'editorjs',
-    //         onReady: () => {
-    //             ejInstance.current = editor;
-    //         },
-    //         autofocus: true,
-    //         onChange: async () => {
-    //             let content = await editor.saver.save();
-    //             console.log(content);
-    //         },
-    //         tools: {
-    //             header: Header,
-    //         },
-    //
-    //     });
-    // };
-
-    const editor = new EditorJS({
-        holder: 'editorjs',
-        onReady: () => {
-            ejInstance.current = editor;
-        },
-        autofocus: true,
-        onChange: async () => {
-            let content = await editor.saver.save();
-
-            console.log(content);
-        },
-        tools: {
-            header: Header,
-        },
-    });
+    useEffect(() => {
+        axios
+            .get('http://localhost:8080/api/article_types')
+            .then(data => {
+                setAllTypes(data.data);
+                console.log(data.data);
+            })
+    }, []);
 
     useEffect(() => {
         const saveBtn = document.querySelector('.save-btn');
@@ -62,23 +41,47 @@ const CreateArticle = () => {
         if (saveBtn) {
             saveBtn.addEventListener('click', saveInformation, false);
         }
+
+        const editor = new EditorJS({
+            holder: 'editorjs',
+            onReady: () => {
+                ejInstance.current = editor;
+            },
+            autofocus: true,
+            onChange: async () => {
+                let content = await editor.saver.save();
+                setContent(content);
+            },
+            tools: {
+                header: Header,
+                paragraph: Paragraph,
+                image: {
+                    class: ImageTool,
+                    config: {
+                        endpoints: {
+                            byFile: 'http://localhost:8008/uploadFile', // Your backend file uploader endpoint
+                            byUrl: 'http://localhost:8008/fetchUrl', // Your endpoint that provides uploading by Url
+                        }
+                    }
+                }
+            },
+        });
     }, []);
 
-    // useEffect(() => {
-    //     if (ejInstance.current === null) {
-    //         initEditor();
-    //     }
-    //
-    //     return () => {
-    //         ejInstance?.current?.destroy();
-    //         ejInstance.current = null;
-    //     };
-    // }, []);
 
     function saveInformation() {
         axios
-            .post('http://localhost:8080/articles', {
-                message
+            .post('http://localhost:8080/api/articles', {
+                name: message,
+                description: null,
+                image: "",
+                published: true,
+                content: JSON.stringify(content),
+                articleType: {
+                    id: type,
+                    name: ""
+                },
+
             })
             .then(function (response) {
                 console.log(response);
@@ -86,30 +89,33 @@ const CreateArticle = () => {
             .catch(function (error) {
                 console.log(error);
             });
+        console.log({
+            name: message,
+            description: null,
+            image: "",
+            published: true,
+            content: JSON.stringify(content),
+            articleType: {
+                id: type,
+                name: ""
+            },})
     }
 
     return (
         <>
             <div className={`${classes['create-wrapper']} container`}>
                 <h1 className={classes['title']}>Добавление новой статьи</h1>
-                <FormControl fullWidth>
-                    <InputLabel id="demo-simple-select-label">Тип статьи:</InputLabel>
-                    <Select
-                        labelId="demo-simple-select-label"
-                        id="demo-simple-select"
-                        value={type}
-                        label="type"
-                        onChange={handleChange}
-                    >
-                        <MenuItem value={0}>Изобразительное искусство</MenuItem>
-                        <MenuItem value={1}>Музыка</MenuItem>
-                        <MenuItem value={2}>Цирк</MenuItem>
-                    </Select>
-                </FormControl>
+                <select ref={change} id="select" onChange={handleChangeType}>
+                    {allTypes && allTypes.map(type => {
+                        return (
+                            <option id={type.id} key={type.id} value={type.id}>{type.name}</option>
+                        )
+                    })}
+                </select>
                 <h2 className={classes['subtitle']}>Название статьи:</h2>
                 <form>
                     <input className={classes['input']} type="text" name="name" placeholder="Название статьи"
-                           onInput={handleChangeType} value={message}/>
+                           onInput={handleChange} value={message}/>
                     <div id="editorjs" className={classes['editor-container']}>
                     </div>
                     <button className={classes['save-btn']} type="button" onClick={saveInformation}>Сохранить статью

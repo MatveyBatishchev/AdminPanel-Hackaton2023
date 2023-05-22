@@ -28,7 +28,7 @@ const Categories = () => {
                     </div>
                     {categories && categories.map(category => {
                         return (
-                            <CardComponent id={category.id} name={category.name} description={category.description}/>
+                            <CardComponent id={category.id} key={category.id} name={category.name} description={category.description}/>
                         )
                     })}
                 </div>
