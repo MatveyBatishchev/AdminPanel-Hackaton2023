@@ -1,13 +1,22 @@
 .card-wrapper {
-  max-width: 500px;
+  //max-width: 1500px;
   padding: 10px;
   display: flex;
   flex-direction: row;
   align-items: center;
   align-content: center;
+  border-bottom: black;
 }
 
-.text {
-  max-width: 200px;
-  padding: 0 140px 0 0;
+.text-name {
+  width: 270px;
+  padding: 0;
+  margin: 0;
+}
+
+.text-desc {
+  width: 350px;
+  padding: 0;
+  margin: 0;
+  text-align: start;
 }
