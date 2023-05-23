@@ -131,8 +131,8 @@ export default function PersistentDrawerLeft() {
                 <List>
                     {MenuList.map(item => {
                         return (
-                            <Link to={item.link}>
-                                <ListItem key={item.text} disablePadding>
+                            <Link to={item.link} key={item.text}>
+                                <ListItem disablePadding>
                                     <ListItemButton>
                                         <ListItemIcon>
                                             {item.index % 2 === 0 ? <InboxIcon/> : <MailIcon/>}

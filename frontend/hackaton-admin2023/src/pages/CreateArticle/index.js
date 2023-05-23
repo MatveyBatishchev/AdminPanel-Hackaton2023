@@ -1,10 +1,11 @@
 import React, {useEffect, useRef, useState} from 'react';
+import {useNavigate} from 'react-router-dom';
 import EditorJS from "@editorjs/editorjs";
 import Header from "@editorjs/header";
 import Paragraph from "@editorjs/paragraph";
 import classes from './style.module.scss';
 import axios from "axios";
-import ImageTool from '@editorjs/image';
+import ImageTool from '@editorjs/image'
 
 const CreateArticle = () => {
 
@@ -15,6 +16,8 @@ const CreateArticle = () => {
     const [content, setContent] = useState(null);
 
     const change = useRef();
+
+    let navigate = useNavigate();
 
     const handleChange = event => {
         setMessage(event.target.value);
@@ -89,16 +92,8 @@ const CreateArticle = () => {
             .catch(function (error) {
                 console.log(error);
             });
-        console.log({
-            name: message,
-            description: null,
-            image: "",
-            published: true,
-            content: JSON.stringify(content),
-            articleType: {
-                id: type,
-                name: ""
-            },})
+        navigate("/articles")
+        window.location.reload();
     }
 
     return (
