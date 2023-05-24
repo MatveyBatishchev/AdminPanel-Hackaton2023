@@ -1,6 +1,7 @@
 import React, {useRef, useState} from 'react';
 import classes from './style.module.scss';
 import QuestionType from "../../../widgets/QuestionType";
+import AnswerType from "../../../widgets/AnswerType";
 
 const QuestionComponent = (props) => {
 
@@ -10,7 +11,6 @@ const QuestionComponent = (props) => {
 
     const [aType, setAnswerType] = useState('');
 
-    const change = useRef();
 
     const questionType = [{
         id: 0,
@@ -31,23 +31,28 @@ const QuestionComponent = (props) => {
 
     const answerType = [{
         id: 0,
-        value: "Текст"
+        value: "Текстовый ответ"
     },
         {
             id: 1,
-            value: "Аудио"
+            value: "Аудио-дорожка"
         },
         {
             id: 2,
-            value: "Видео"
+            value: "Видео-ресурс"
         },
         {
             id: 3,
-            value: "Изображение"
+            value: "Изображение или фотография"
         }]
 
     function questionTypeSelect(event) {
         setQuestionType(event.target.value);
+        console.log('value is:', event.target.value);
+    }
+
+    function answerTypeSelect(event) {
+        setAnswerType(event.target.value);
         console.log('value is:', event.target.value);
     }
 
@@ -59,54 +64,43 @@ const QuestionComponent = (props) => {
                     <input className={classes['text-input']} id='question' placeholder='Текст вопроса'/>
                 </div>
                 <p className={classes['choose-question']}>Выберите тип вопроса:</p>
-                <select ref={change} id="select-question" onChange={questionTypeSelect}>
+                <select id="select-question" onChange={questionTypeSelect}>
                     {
                         questionType.map(type => {
                             return (
-                                <option key={type.id} id={type.id} value={type.id}>{type.value}</option>
+                                <option key={type.id} id={type.id} value={type.value}>{type.value}</option>
                             )
                         })
                     }
                 </select>
-                {/*{*/}
-                {/*    (qType && Number(qType) === 1 && Array.from(Array(Number(qType))).map((x, index) => {*/}
-                {/*        return (*/}
-                {/*            <div key={index}>*/}
-                {/*                <p className={classes['audio-text']}>Прикрепите аудио-материал:</p>*/}
-                {/*                <input className={classes['audio-input']} type="file" />*/}
-                {/*            </div>*/}
-                {/*        )*/}
-                {/*    }))*/}
-                {/*}*/}
-                {/*{*/}
-                {/*    (qType && Number(qType) === 2 && Array.from(Array(Number(qType))).map((x, index) => {*/}
-                {/*        return (*/}
-                {/*            <div key={index}>*/}
-                {/*                <p className={classes['video-text']}>Прикрепите видео-материал:</p>*/}
-                {/*                <input className={classes['video-input']} type="file"/>*/}
-                {/*            </div>*/}
-                {/*        )*/}
-                {/*    }))*/}
-                {/*}*/}
                 {
-                        (qType && Array.from(Array(Number(qType))).map((x, index) => {
-                        return (
-                            <QuestionType key={index} id={index}/>
-                        )
-                    }))
+                    (qType ? (
+                        <QuestionType key={qType} value={qType}/>
+                    ) :
+                        (
+                            <div></div>
+                        ))
                 }
 
                 <p className={classes['choose-answer']}>Выберите тип ответа:</p>
-                <select>
+                <select id="select-ans" onChange={answerTypeSelect}>
                     {
                         answerType.map(type => {
                             return (
-                                <option key={type.id}>{type.value}</option>
+                                <option key={type.id} value={type.value}>{type.value}</option>
                             )
                         })
 
                     }
                 </select>
+                {
+                    (aType ? (
+                            <AnswerType key={aType} value={aType}/>
+                        ) :
+                        (
+                            <div></div>
+                        ))
+                }
             </div>
         </>
     );
