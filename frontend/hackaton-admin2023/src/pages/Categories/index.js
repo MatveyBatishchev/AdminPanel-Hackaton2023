@@ -1,6 +1,6 @@
 import React, {useEffect, useState} from 'react';
 import axios from "axios";
-import classes from "../Main/style.module.scss";
+import classes from "./style.module.scss";
 import CardComponent from "../../shared/ui/CardComponent";
 
 const Categories = () => {
@@ -28,7 +28,10 @@ const Categories = () => {
                     </div>
                     {categories && categories.map(category => {
                         return (
-                            <CardComponent id={category.id} key={category.id} name={category.name} description={category.description}/>
+                            <CardComponent id={category.id}
+                                           key={category.id}
+                                           name={category.name}
+                                           description={category.description}/>
                         )
                     })}
                 </div>

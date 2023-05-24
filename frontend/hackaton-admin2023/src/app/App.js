@@ -10,6 +10,9 @@ import ArticleEditor from "../pages/ArticleEditor";
 import Tests from "../pages/Tests";
 import Test from "../pages/Test";
 import CreateTest from "../pages/CreateTest";
+import Category from "../pages/Category";
+import CategoryEditor from "../pages/CategoryEditor";
+
 
 function App() {
     return (
@@ -19,7 +22,9 @@ function App() {
                 <Route path='/' element={<Welcome />} />
                 <Route path='/articles' element={<Main/>}/>
                 <Route path="/articles/:id" element={<Article />} />
-                <Route path="/articles/edit/:id" element={<ArticleEditor />} />
+                <Route path="/categories/:id" element={<Category />} />
+                <Route path="/articles_edit/:id" element={<ArticleEditor />} />
+                <Route path="/categories_edit/:id" element={<CategoryEditor />} />
                 <Route path='/categories' element={<Categories />}/>
                 <Route path='/articles/add_article' element={<CreateArticle />} />
                 <Route path='/tests' element={<Tests />} />

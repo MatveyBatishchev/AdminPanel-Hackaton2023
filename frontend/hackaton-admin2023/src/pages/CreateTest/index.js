@@ -4,61 +4,16 @@ import QuestionComponent from "../../shared/ui/QuestionComponent";
 
 const CreateTest = () => {
 
-    const [components, setComponents] = useState([]);
+    // const [components, setComponents] = useState([]);
     const [inputs, setInputs] = React.useState([])
     const [amount, setAmount] = React.useState("")
     const [renderInputs, setRenderInputs] = React.useState(false);
 
-    const change = useRef();
-
-    const questionType = [{
-        id: 0,
-        value: "Текст"
-    },
-        {
-            id: 1,
-            value: "Аудио"
-        },
-        {
-            id: 2,
-            value: "Видео"
-        },
-        {
-            id: 3,
-            value: "Изображение"
-        }]
-
-    const answerType = [{
-        id: 0,
-        value: "Текст"
-    },
-        {
-            id: 1,
-            value: "Аудио"
-        },
-        {
-            id: 2,
-            value: "Видео"
-        },
-        {
-            id: 3,
-            value: "Изображение"
-        }]
-
-    useEffect(() => {
-        console.log(amount)
-    }, [amount])
 
 
-    // const setInput = event => {
-    //     setComponents(event.target.value);
-    //     console.log('value is:', event.target.value);
-    //
-    // }
-    //
-    // function addQuestion() {
-    //     setComponents([...components, []])
-    // }
+    function saveAnswers() {
+        console.log('Ответы сохранены!')
+    }
 
     return (
         <>
@@ -70,15 +25,19 @@ const CreateTest = () => {
                 <p>Количество очков за тест:</p>
                 <input/>
                 <p>Количество вопросов:</p>
-                {/*<input ref={change} onInput={setInput} id="count"/>*/}
                 <input onChange={(event) => setAmount(event.target.value)}/>
-
-                {renderInputs && Array.from(Array(Number(amount))).map((x, index) => <QuestionComponent key={index}/>)}
-                <button onClick={() => {
-                    setRenderInputs(true)
+                <button id='quest' className={classes['btn']} onClick={() => {
+                    setRenderInputs(true);
+                    document.getElementById("quest").disabled = true;
                 }}>Добавить вопросы
                 </button>
-
+                <form onSubmit={(event) => {event.preventDefault()}}>
+                    {renderInputs &&
+                        Array.from(Array(Number(amount))).map((x, index) => <QuestionComponent
+                            key={index}
+                            id={index}/>)}
+                    <button id='save-btn' className={classes['btn']} type="submit" onClick={()=>{saveAnswers()}}>Сохранить ответы</button>
+                </form>
             </div>
         </>
     );
