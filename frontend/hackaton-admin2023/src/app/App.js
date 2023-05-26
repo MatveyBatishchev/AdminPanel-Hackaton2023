@@ -12,6 +12,8 @@ import Test from "../pages/Test";
 import CreateTest from "../pages/CreateTest";
 import Category from "../pages/Category";
 import CategoryEditor from "../pages/CategoryEditor";
+import Schools from "../pages/Schools";
+import School from "../pages/School";
 
 
 function App() {
@@ -30,6 +32,8 @@ function App() {
                 <Route path='/tests' element={<Tests />} />
                 <Route path='/tests/:id' element={<Test />} />
                 <Route path='/tests/create_test' element={<CreateTest />} />
+                <Route path='/schools' element={<Schools/>} />
+                <Route path='/schools/:id' element={<School />} />
             </Routes>
         </>
     );

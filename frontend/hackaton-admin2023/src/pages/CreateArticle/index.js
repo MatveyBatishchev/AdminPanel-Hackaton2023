@@ -50,6 +50,7 @@ const CreateArticle = () => {
             .get('http://localhost:8080/api/article_types')
             .then(data => {
                 setAllTypes(data.data);
+                setType(data.data[0].id);
             })
     }, []);
 
@@ -58,6 +59,7 @@ const CreateArticle = () => {
             .get('http://localhost:8080/api/arts')
             .then(data => {
                 setArts(data.data);
+                chooseArt(data.data[0].id);
             })
     }, [])
 

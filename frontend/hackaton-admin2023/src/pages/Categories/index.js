@@ -17,6 +17,7 @@ const Categories = () => {
     }, []);
 
 
+
     return (
         <>
             <div className={`${classes['main-wrapper']} container`}>
@@ -24,7 +25,6 @@ const Categories = () => {
                 <div className={classes['content']}>
                     <div className={classes['first-row']}>
                         <p className={classes['subtitle']}>Название</p>
-                        <p className={classes['subtitle']}>Описание</p>
                     </div>
                     {categories && categories.map(category => {
                         return (

@@ -1,6 +1,5 @@
 .card-wrapper {
-  //max-width: 1500px;
-  padding: 10px;
+  padding: 10px 0;
   display: flex;
   flex-direction: row;
   align-items: center;
@@ -13,9 +12,29 @@
 }
 
 .text-name {
-  width: 150px;
+  width: 230px;
   padding: 0;
   margin: 0;
+}
+
+.articles-info {
+  display: flex;
+  flex-direction: row;
+  width: 100%;
+}
+
+.schools-info {
+  display: flex;
+  flex-direction: row;
+  column-gap: 30px;
+}
+
+.categories-info {
+  width: 100%;
+}
+
+.text-name-cat {
+  width: 900px;
 }
 
 .text-desc {
@@ -29,4 +48,16 @@
   width: 215px;
   padding: 0;
   margin: 0;
+}
+
+.text-name-sc {
+  width: 190px;
+}
+
+.text-email {
+  width: 167px;
+}
+
+.text-address {
+  width: 170px;
 }

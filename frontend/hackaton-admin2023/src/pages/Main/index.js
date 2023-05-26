@@ -5,13 +5,10 @@ import classes from './style.module.scss';
 import AddCircleIcon from '@mui/icons-material/AddCircle';
 import {Button} from "@mui/material";
 import {Link} from "react-router-dom";
-// import {useParams} from "react-router-dom";
 
 const src = 'http://localhost:8080/api/articles'
 
 const Main = () => {
-
-    // const { categoryId } = useParams();
 
     const [articles, setArticles] = useState(null);
 
@@ -37,10 +34,10 @@ const Main = () => {
                 </div>
                 <div className={classes['content']}>
                     <div className={classes['first-row']}>
-                        <p className={classes['subtitle']}>Название</p>
-                        <p className={classes['subtitle']}>Описание</p>
-                        <p className={classes['subtitle']}>Категория</p>
-                        <p className={classes['subtitle']}>Дата создания</p>
+                        <p className={classes['subtitle-name']}>Название</p>
+                        <p className={classes['subtitle-desc']}>Описание</p>
+                        <p className={classes['subtitle-cat']}>Категория</p>
+                        <p className={classes['subtitle-date']}>Дата создания</p>
                     </div>
                     <div className={classes['second-row']}>
                         {articles && articles.map(article => {

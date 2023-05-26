@@ -1,14 +1,13 @@
 import React, {useEffect, useState} from 'react';
-import {useParams} from "react-router-dom";
+import {Link, useParams} from "react-router-dom";
 import classes from './style.module.scss';
 import axios from "axios";
+import Output from 'editorjs-react-renderer';
 
 
 const Article = (props) => {
 
     const {id} = useParams();
-
-    console.log(id)
 
     const [articleData, setData] = useState(null);
     const [contentData, setContentData] = useState(null);
@@ -22,28 +21,32 @@ const Article = (props) => {
             })
     }, []);
 
-    useEffect(()=> {
+    useEffect(() => {
         if (articleData) {
             let information = JSON.parse(articleData.content);
-            console.log(information)
+            setContentData(information);
         }
     }, [articleData])
 
     return (
         <>
-            {articleData ? (
-                <>
-                    <h1 className={`${classes['title']} container`}>{articleData.name}</h1>
-                    <h1 className={`${classes['title']} container`}>{articleData.desc}</h1>
-                    <h1 className={`${classes['title']} container`}>{articleData.content}</h1>
-                </>
-                ) :
-                (
-                    <h1 className={`${classes['loading']} container`}>Привет! Page is Loading</h1>
-                )
-            }
+            <div className={`${classes['article-wrapper']} container`}>
+                {articleData ? (
+                        <>
 
+                            <h1 className={classes['title']}>{articleData.name}</h1>
+                            <h1 className={classes['subtitle']}>{articleData.desc}</h1>
+                            <section><Output data={contentData}/></section>
 
+                        </>
+                    ) :
+                    (
+                        <h1 className={`${classes['loading']} container`}>Привет! Page is Loading</h1>
+                    )
+                }
+
+                <button className={classes['back-btn']}><Link to={'/articles'}>Вернуться назад</Link></button>
+            </div>
         </>
     );
 };

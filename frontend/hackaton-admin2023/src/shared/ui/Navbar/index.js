@@ -31,7 +31,39 @@ const MenuList = [{
         index: 1,
         text: 'Категории',
         link: '/categories'
-    }];
+    },
+    {
+        index: 2,
+        text: 'Направления',
+        link: '/arts'
+    },
+    {
+        index: 3,
+        text: 'Школы',
+        link: '/schools',
+    },
+    {
+        index: 4,
+        text: 'Тесты',
+        link: '/tests',
+    },
+    {
+        index: 5,
+        text: 'Пользователи',
+        link: '/users',
+    },
+    {
+        index: 6,
+        text: 'Программы школ',
+        link: '/programs'
+    },
+    {
+        index: 7,
+        text: 'Округа',
+        link: '/districts'
+    }
+
+    ];
 
 const Main = styled('main', {shouldForwardProp: (prop) => prop !== 'open'})(
     ({theme, open}) => ({

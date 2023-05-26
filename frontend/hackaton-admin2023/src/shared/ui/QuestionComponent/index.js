@@ -1,4 +1,4 @@
-import React, {useRef, useState} from 'react';
+import React, {useEffect, useRef, useState} from 'react';
 import classes from './style.module.scss';
 import QuestionType from "../../../widgets/QuestionType";
 import AnswerType from "../../../widgets/AnswerType";
@@ -8,8 +8,11 @@ const QuestionComponent = (props) => {
     let number = props.id;
 
     const [qType, setQuestionType] = useState('');
-
     const [aType, setAnswerType] = useState('');
+
+    useEffect(() => {
+
+    }, [])
 
 
     const questionType = [{
@@ -61,7 +64,7 @@ const QuestionComponent = (props) => {
             <div className={classes['question-wrapper']}>
                 <div className={classes['first-row']}>
                     <p className={classes['question-number']}>{++number}</p>
-                    <input className={classes['text-input']} id='question' placeholder='Текст вопроса'/>
+                    <input className={classes['text-input']} name={`text-quest-${number}`} id='question' placeholder='Текст вопроса'/>
                 </div>
                 <p className={classes['choose-question']}>Выберите тип вопроса:</p>
                 <select id="select-question" onChange={questionTypeSelect}>
@@ -75,7 +78,7 @@ const QuestionComponent = (props) => {
                 </select>
                 {
                     (qType ? (
-                        <QuestionType key={qType} value={qType}/>
+                        <QuestionType key={qType} index={number} value={qType}/>
                     ) :
                         (
                             <div></div>
@@ -87,7 +90,7 @@ const QuestionComponent = (props) => {
                     {
                         answerType.map(type => {
                             return (
-                                <option key={type.id} value={type.value}>{type.value}</option>
+                                <option key={type.id} index={number} value={type.value}>{type.value}</option>
                             )
                         })
 
