@@ -6,6 +6,8 @@ import Paragraph from "@editorjs/paragraph";
 import classes from './style.module.scss';
 import axios from "axios";
 import ImageTool from '@editorjs/image'
+import queryString from 'query-string';
+
 
 const CreateArticle = () => {
 
@@ -14,29 +16,50 @@ const CreateArticle = () => {
     const ejInstance = useRef();
     const [allTypes, setAllTypes] = useState(null);
     const [content, setContent] = useState(null);
+    const [arts, setArts] = useState(0);
+    const [chosenArt, chooseArt] = useState([0]);
 
     const change = useRef();
 
     let navigate = useNavigate();
 
+
     const handleChange = event => {
         setMessage(event.target.value);
-        console.log('value is:', event.target.value);
     };
+
+    const handleChangeArt = event => {
+        let id = event.target.value;
+        let idInt = Number(id);
+        chooseArt([idInt]);
+
+    }
 
     const handleChangeType = event => {
         setType(event.target.value);
-        console.log('type is:', event.target.value);
     }
+
+    useEffect(() => {
+        console.log(chosenArt);
+        console.log(typeof chosenArt);
+        console.log(Array.isArray(chosenArt))
+    }, [chosenArt])
 
     useEffect(() => {
         axios
             .get('http://localhost:8080/api/article_types')
             .then(data => {
                 setAllTypes(data.data);
-                console.log(data.data);
             })
     }, []);
+
+    useEffect(() => {
+        axios
+            .get('http://localhost:8080/api/arts')
+            .then(data => {
+                setArts(data.data);
+            })
+    }, [])
 
     useEffect(() => {
         const saveBtn = document.querySelector('.save-btn');
@@ -87,7 +110,26 @@ const CreateArticle = () => {
 
             })
             .then(function (response) {
-                console.log(response);
+                console.log(response)
+                let idArticle = response.data.id;
+                console.log(chosenArt);
+                console.log(typeof chosenArt);
+                axios({
+                    method: "put",
+                    url: `http://localhost:8080/api/articles/${idArticle}/arts`,
+                    params: {
+                        art_ids: chosenArt,
+                    },
+                    paramsSerializer: params => {
+                        return queryString.stringify(params)
+                    }
+                })
+                    .then(function (response) {
+                        console.log(response);
+                    })
+                    .catch(function (error) {
+                        console.log(error);
+                    });
             })
             .catch(function (error) {
                 console.log(error);
@@ -106,6 +148,15 @@ const CreateArticle = () => {
                             <option id={type.id} key={type.id} value={type.id}>{type.name}</option>
                         )
                     })}
+                </select>
+                <div></div>
+                <select onChange={handleChangeArt}>
+                    {arts && arts.map(art => {
+                        return (
+                            <option value={art.id} key={art.id}>{art.name}</option>
+                        )
+                    })
+                    }
                 </select>
                 <h2 className={classes['subtitle']}>Название статьи:</h2>
                 <form>

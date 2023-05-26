@@ -11,7 +11,7 @@ const Article = (props) => {
     console.log(id)
 
     const [articleData, setData] = useState(null);
-
+    const [contentData, setContentData] = useState(null);
 
     useEffect(() => {
         axios
@@ -21,6 +21,13 @@ const Article = (props) => {
                 console.log(data.data);
             })
     }, []);
+
+    useEffect(()=> {
+        if (articleData) {
+            let information = JSON.parse(articleData.content);
+            console.log(information)
+        }
+    }, [articleData])
 
     return (
         <>
