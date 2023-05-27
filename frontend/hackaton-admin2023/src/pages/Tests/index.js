@@ -23,7 +23,6 @@ const Tests = () => {
                 <div className={classes['content']}>
                     <div className={classes['first-row']}>
                         <p className={classes['subtitle-name']}>Название</p>
-                        <p className={classes['subtitle-count']}>Количество очков</p>
                         <p className={classes['subtitle-dif']}>Сложность</p>
                         <p className={classes['subtitle-art']}>Направление</p>
                     </div>
@@ -32,7 +31,6 @@ const Tests = () => {
                             <CardComponent id={test.id}
                                            key={test.id}
                                            name={test.title}
-                                           score={test.scorePerQuestion}
                                            dif={test.difficulty}
                                            art={test.art.name}
                             />

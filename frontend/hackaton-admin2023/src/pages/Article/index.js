@@ -37,7 +37,9 @@ const Article = (props) => {
                             <h1 className={classes['title']}>{articleData.name}</h1>
                             <h1 className={classes['subtitle']}>{articleData.desc}</h1>
                             <section><Output data={contentData}/></section>
-
+                            <div className={classes['image-container']}>
+                                <img className={classes['article-image']} src={articleData.image}/>
+                            </div>
                         </>
                     ) :
                     (

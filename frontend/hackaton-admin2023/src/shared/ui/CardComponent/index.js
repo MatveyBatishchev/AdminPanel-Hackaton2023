@@ -93,7 +93,6 @@ const CardComponent = (props) => {
                                     {props.name}
                                 </Link>
                             </p>
-                            <p className={classes['text-score']}>{props.score}</p>
                             <p className={classes['text-dif']}>{props.dif}</p>
                             <p className={classes['text-art']}>{props.art}</p>
                         </div>

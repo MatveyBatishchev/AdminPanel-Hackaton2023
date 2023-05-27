@@ -57,12 +57,6 @@ const MenuList = [{
         text: 'Программы школ',
         link: '/programs'
     },
-    {
-        index: 7,
-        text: 'Округа',
-        link: '/districts'
-    }
-
     ];
 
 const Main = styled('main', {shouldForwardProp: (prop) => prop !== 'open'})(

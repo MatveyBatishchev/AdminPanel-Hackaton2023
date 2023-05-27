@@ -91,6 +91,12 @@ const CreateArticle = () => {
                     config: {
                         endpoints: {
                             byFile: 'http://94.139.255.120/api/files', // Your backend file uploader endpoint
+                        },
+                        additionalRequestData: {
+                            'file_entity_marker': 'ARTICLE',
+                        },
+                        additionalRequestHeaders: {
+                            'Content-Type': 'multipart/form-data',
                         }
                     }
                 },

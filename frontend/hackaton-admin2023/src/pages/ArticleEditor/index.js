@@ -75,6 +75,7 @@ const ArticleEditor = () => {
                     tools: {
                         header: Header,
                         paragraph: Paragraph,
+                        image: ImageTool,
                     },
                     data: blocks
                 });
@@ -90,6 +91,27 @@ const ArticleEditor = () => {
                 });
             }
         }, [info])
+
+        function saveNewArticleImage() {
+            var imagefile = document.querySelector('#image-chooser');
+            var formData = new FormData();
+            formData.append('file_entity_marker', 'ARTICLE');
+            formData.append("file", imagefile.files[0]);
+
+            axios.post('http://94.139.255.120/api/files', formData
+            )
+                .then(function (response) {
+                    console.log(response);
+                    let url = response.data.file.url;
+                    if (url) {
+                        setImage(url);
+                        console.log(url)
+                    }
+                })
+                .catch(function (error) {
+                    console.log(error);
+                });
+        }
 
         function saveInformation() {
             axios
@@ -144,6 +166,10 @@ const ArticleEditor = () => {
                                            onInput={handleChange} value={message}/>
                                     <div id="editorjs" className={classes['editor-container']}>
                                     </div>
+                                    <p className={classes['subtitle']}>Если хотите изменить фотографию,
+                                        приложенную к статье, новую фотографию Вы можете выгрузить сюда: </p>
+                                    <input type="file" name='image-chooser' id="image-chooser" accept="image/*"
+                                           onInput={saveNewArticleImage}/>
                                     <button className={classes['save-btn']} type="button" onClick={saveInformation}>Сохранить
                                         статью
                                     </button>
