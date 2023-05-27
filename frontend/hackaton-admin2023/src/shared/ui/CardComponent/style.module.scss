@@ -1,0 +1,130 @@
+.card-wrapper {
+  padding: 10px 0;
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  align-content: center;
+  column-gap: 10px;
+}
+
+.bottom {
+  border: 2px black;
+}
+
+.text-name {
+  width: 240px;
+  padding: 0 20px 0 0;
+  margin: 0;
+}
+
+
+.articles-info {
+  display: flex;
+  flex-direction: row;
+  width: 100%;
+  align-items: center;
+}
+
+.schools-info {
+  display: flex;
+  flex-direction: row;
+  column-gap: 30px;
+  align-items: center;
+}
+
+.categories-info {
+  width: 100%;
+}
+
+.text-name-cat {
+  width: 900px;
+}
+
+.text-desc {
+  width: 340px;
+  padding: 0;
+  margin: 0;
+  text-align: start;
+}
+
+.text-type {
+  width: 245px;
+  padding: 0;
+  margin: 0;
+}
+
+.text-name-sc {
+  width: 190px;
+}
+
+.text-email {
+  width: 280px;
+}
+
+.text-address {
+  width: 180px;
+}
+
+.text-name-arts {
+  width: 900px;
+}
+
+.tests-info {
+  display: flex;
+  flex-direction: row;
+  width: 100%;
+  align-items: center;
+  column-gap: 20px;
+}
+
+.text-name-tests {
+  width: 420px;
+  padding: 0 40px 0 0;
+}
+
+.text-dif {
+  text-align: center;
+  width: 250px;
+}
+
+.text-art {
+  width: 200px;
+  text-align: center;
+}
+
+.users-info {
+  display: flex;
+  flex-direction: row;
+  width: 100%;
+  align-items: center;
+  column-gap: 20px;
+}
+
+.text-name-users {
+  width: 180px;
+}
+
+.text-score {
+  width: 100px;
+  text-align: center;
+}
+
+.text-email-us {
+  width: 200px;
+  text-align: center;
+}
+
+.text-roles {
+  width: 150px;
+  text-align: center;
+}
+
+.programs-info {
+  display: flex;
+  flex-direction: row;
+  width: 100%;
+}
+
+.text-name-programs {
+  width: 800px;
+}

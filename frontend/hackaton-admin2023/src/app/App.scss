@@ -1,0 +1,14 @@
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+@media (min-width: 1244px) {
+  .container {
+    width: 75%;
+    margin: 0 auto;
+    max-width: 1920px;
+    padding: 100px 0 150px 0;
+  }
+}

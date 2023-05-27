@@ -1,0 +1,25 @@
+.main-wrapper {
+  display: flex;
+  flex-direction: column;
+  max-width: 100%;
+  align-content: center;
+}
+.first-row {
+  display: flex;
+  flex-direction: row;
+  font-weight: bold;
+  padding: 10px 0 10px 0;
+}
+
+.subtitle-name {
+  padding: 0 0 0 55px;
+  width: 290px;
+}
+
+.subtitle-sc {
+  width: 170px;
+}
+
+.subtitle-em {
+  width: 193px;
+}

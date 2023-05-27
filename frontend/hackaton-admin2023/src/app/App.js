@@ -1,0 +1,49 @@
+import './App.scss';
+import Navbar from "../shared/ui/Navbar";
+import {Route, Routes} from "react-router-dom";
+import Main from "../pages/Main";
+import Article from "../pages/Article";
+import Welcome from "../pages/Welcome";
+import Categories from "../pages/Categories";
+import CreateArticle from "../pages/CreateArticle";
+import ArticleEditor from "../pages/ArticleEditor";
+import Tests from "../pages/Tests";
+import Test from "../pages/Test";
+import CreateTest from "../pages/CreateTest";
+import Category from "../pages/Category";
+import CategoryEditor from "../pages/CategoryEditor";
+import Schools from "../pages/Schools";
+import School from "../pages/School";
+import Arts from "../pages/Arts";
+import Users from "../pages/Users";
+import Programs from "../pages/Programs";
+import Districts from "../pages/Discricts";
+
+
+function App() {
+    return (
+        <>
+            <Navbar/>
+            <Routes>
+                <Route path='/' element={<Welcome />} />
+                <Route path='/articles' element={<Main/>}/>
+                <Route path="/articles/:id" element={<Article />} />
+                <Route path="/categories/:id" element={<Category />} />
+                <Route path="/articles_edit/:id" element={<ArticleEditor />} />
+                <Route path="/categories_edit/:id" element={<CategoryEditor />} />
+                <Route path='/categories' element={<Categories />}/>
+                <Route path='/articles/add_article' element={<CreateArticle />} />
+                <Route path='/tests' element={<Tests />} />
+                <Route path='/tests/:id' element={<Test />} />
+                <Route path='/tests/create_test' element={<CreateTest />} />
+                <Route path='/schools' element={<Schools/>} />
+                <Route path='/schools/:id' element={<School />} />
+                <Route path='/arts' element={<Arts />} />
+                <Route path='/users' element={<Users />}/>
+                <Route path='/programs' element={<Programs />} />
+            </Routes>
+        </>
+    );
+}
+
+export default App;

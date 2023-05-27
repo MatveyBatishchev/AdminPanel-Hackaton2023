@@ -1,0 +1,49 @@
+.main-wrapper {
+  display: flex;
+  flex-direction: column;
+  max-width: 100%;
+  align-content: center;
+}
+
+.title {
+  padding: 0 0 20px 0;
+}
+
+.content {
+  display: flex;
+  flex-direction: column;
+}
+
+.first-row {
+  display: flex;
+  flex-direction: row;
+  font-weight: bold;
+  padding: 10px 0 10px 0;
+}
+
+.second-row {
+  display: flex;
+  flex-direction: column;
+
+}
+
+.btn-row {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: flex-start;
+  padding: 0 0 40px 0;
+}
+
+.subtitle-name {
+  padding: 0 0 0 55px;
+  width: 265px;
+}
+
+.subtitle-email {
+  width: 310px;
+}
+
+.subtitle-ad {
+  width: 200px;
+}
