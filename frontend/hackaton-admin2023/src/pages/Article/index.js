@@ -14,7 +14,7 @@ const Article = (props) => {
 
     useEffect(() => {
         axios
-            .get(`http://localhost:8080/api/articles/${id}`)
+            .get(`http://94.139.255.120/api/articles/${id}`)
             .then(data => {
                 setData(data.data);
                 console.log(data.data);

@@ -6,7 +6,7 @@ import AddCircleIcon from '@mui/icons-material/AddCircle';
 import {Button} from "@mui/material";
 import {Link} from "react-router-dom";
 
-const src = 'http://localhost:8080/api/articles'
+const src = 'http://94.139.255.120/api/articles'
 
 const Main = () => {
 
@@ -15,7 +15,11 @@ const Main = () => {
 
     useEffect(() => {
         axios
-            .get(src)
+            .get(src, {
+                params: {
+                    per_page: 60
+                }
+        })
             .then(data => {
                 setArticles(data.data);
                 console.log(data.data);

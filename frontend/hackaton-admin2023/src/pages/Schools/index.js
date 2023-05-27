@@ -1,12 +1,12 @@
 import React, {useEffect, useState} from 'react';
-import classes from "../Main/style.module.scss";
+import classes from "./style.module.scss";
 import AddCircleIcon from "@mui/icons-material/AddCircle";
 import {Button} from "@mui/material";
 import {Link} from "react-router-dom";
 import CardComponent from "../../shared/ui/CardComponent";
 import axios from "axios";
 
-const src = 'http://localhost:8080/api/schools'
+const src = 'http://94.139.255.120/api/schools'
 
 const Schools = () => {
 
@@ -33,11 +33,10 @@ const Schools = () => {
                 </div>
                 <div className={classes['content']}>
                     <div className={classes['first-row']}>
-                        <p className={classes['subtitle']}>Название</p>
-                        <p className={classes['subtitle']}>Email</p>
-                        <p className={classes['subtitle']}>Адрес</p>
-                        <p className={classes['subtitle']}>Номер телефона</p>
-                        <p className={classes['subtitle']}>Округ</p>
+                        <p className={classes['subtitle-name']}>Название</p>
+                        <p className={classes['subtitle-email']}>Email</p>
+                        <p className={classes['subtitle-ad']}>Адрес, округ</p>
+                        <p className={classes['subtitle-number']}>Номер телефона</p>
                     </div>
                     <div className={classes['second-row']}>
                         {schools && schools.map(school => {

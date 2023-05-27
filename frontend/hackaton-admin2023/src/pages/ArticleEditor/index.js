@@ -1,7 +1,7 @@
 import React, {useEffect, useRef, useState} from 'react';
 import axios from "axios";
 import {useParams} from "react-router-dom";
-import classes from "../Article/style.module.scss";
+import classes from "./style.module.scss";
 import EditorJS from "@editorjs/editorjs";
 import Header from "@editorjs/header";
 import Paragraph from "@editorjs/paragraph";
@@ -14,9 +14,11 @@ const ArticleEditor = () => {
 
         const [message, setMessage] = useState('');
         const [type, setType] = useState(null);
+        const [typeName, setTypeName] = useState('');
         const ejInstance = useRef();
         const [allTypes, setAllTypes] = useState(null);
         const [content, setContent] = useState(null);
+        const [image, setImage] = useState(null);
 
         const change = useRef();
 
@@ -32,7 +34,7 @@ const ArticleEditor = () => {
 
         useEffect(() => {
             axios
-                .get('http://localhost:8080/api/article_types')
+                .get('http://94.139.255.120/api/article_types')
                 .then(data => {
                     setAllTypes(data.data);
                     console.log(data.data);
@@ -41,9 +43,12 @@ const ArticleEditor = () => {
 
         useEffect(() => {
             axios
-                .get(`http://localhost:8080/api/articles/${id}`)
+                .get(`http://94.139.255.120/api/articles/${id}`)
                 .then(data => {
                     setInfo(data.data);
+                    setImage(data.data.image);
+                    setType(data.data.articleType.id);
+                    setTypeName(JSON.stringify(data.data.articleType.name))
                 })
         }, []);
 
@@ -88,10 +93,10 @@ const ArticleEditor = () => {
 
         function saveInformation() {
             axios
-                .put(`http://localhost:8080/api/articles/${id}`, {
+                .put(`http://94.139.255.120/api/articles/${id}`, {
                     name: message,
                     description: null,
-                    image: "",
+                    image: image,
                     published: true,
                     content: JSON.stringify(content),
                     articleType: {
@@ -109,7 +114,7 @@ const ArticleEditor = () => {
             console.log({
                 name: message,
                 description: null,
-                image: "",
+                image: image,
                 published: true,
                 content: JSON.stringify(content),
                 articleType: {
@@ -123,24 +128,27 @@ const ArticleEditor = () => {
             <>
                 {info ? (
                         <>
-                            <h1 className={classes['title']}>Редакторивание статьи</h1>
-                            <select ref={change} id="select" onChange={handleChangeType}>
-                                {allTypes && allTypes.map(type => {
-                                    return (
-                                        <option id={type.id} key={type.id} value={type.id}>{type.name}</option>
-                                    )
-                                })}
-                            </select>
-                            <h2 className={classes['subtitle']}>Название статьи:</h2>
-                            <form>
-                                <input className={classes['input']} type="text" name="name" placeholder="Название статьи"
-                                       onInput={handleChange} value={message}/>
-                                <div id="editorjs" className={classes['editor-container']}>
-                                </div>
-                                <button className={classes['save-btn']} type="button" onClick={saveInformation}>Сохранить
-                                    статью
-                                </button>
-                            </form>
+                            <div className={`${classes['article-editor-wrapper']} container`}>
+                                <h1 className={classes['title']}>Редакторивание статьи</h1>
+                                <select ref={change} id="select" onChange={handleChangeType}>
+                                    {typeName && allTypes && allTypes.map(type => {
+                                        return (
+                                            <option id={type.id} key={type.id} value={type.id}
+                                                    defaultValue={typeName}>{type.name}</option>
+                                        )
+                                    })}
+                                </select>
+                                <h2 className={classes['subtitle']}>Название статьи:</h2>
+                                <form>
+                                    <input className={classes['input']} type="text" name="name" placeholder="Название статьи"
+                                           onInput={handleChange} value={message}/>
+                                    <div id="editorjs" className={classes['editor-container']}>
+                                    </div>
+                                    <button className={classes['save-btn']} type="button" onClick={saveInformation}>Сохранить
+                                        статью
+                                    </button>
+                                </form>
+                            </div>
                         </>
                     ) :
                     (

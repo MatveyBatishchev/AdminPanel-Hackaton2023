@@ -1,17 +1,17 @@
 import React, {useEffect, useState} from 'react';
 import axios from "axios";
-import classes from "./style.module.scss";
+import classes from "../Categories/style.module.scss";
 import CardComponent from "../../shared/ui/CardComponent";
 
-const Categories = () => {
+const Programs = () => {
 
-    const [categories, setCategories] = useState(null);
+    const [programs, setPrograms] = useState(null);
 
     useEffect(() => {
         axios
-            .get('http://94.139.255.120/api/article_types')
+            .get('http://94.139.255.120/api/study-programs')
             .then(data => {
-                setCategories(data.data);
+                setPrograms(data.data);
                 console.log(data.data);
             })
     }, []);
@@ -21,16 +21,16 @@ const Categories = () => {
     return (
         <>
             <div className={`${classes['main-wrapper']} container`}>
-                <h1 className={classes['title']}>Все категории</h1>
+                <h1 className={classes['title']}>Все учебные программы</h1>
                 <div className={classes['content']}>
                     <div className={classes['first-row']}>
                         <p className={classes['subtitle']}>Название</p>
                     </div>
-                    {categories && categories.map(category => {
+                    {programs && programs.map(program => {
                         return (
-                            <CardComponent id={category.id}
-                                           key={category.id}
-                                           name={category.name}/>
+                            <CardComponent id={program.id}
+                                           key={program.id}
+                                           name={program.name}/>
                         )
                     })}
                 </div>
@@ -39,4 +39,4 @@ const Categories = () => {
     );
 };
 
-export default Categories;
+export default Programs;

@@ -18,7 +18,7 @@ const CardComponent = (props) => {
 
     function onClickDelete() {
         axios
-            .delete(`http://localhost:8080/api${location.pathname}/${props.id}`)
+            .delete(`http://94.139.255.120/api${location.pathname}/${props.id}`)
             .then(function (response) {
                 console.log(response);
                 window.location.reload();
@@ -33,7 +33,7 @@ const CardComponent = (props) => {
         <>
             <div className={classes['card-wrapper']}>
                 <div className={classes['checkbox']}>
-                    <FormControlLabel control={<Checkbox defaultChecked/>}/>
+                    <FormControlLabel control={<Checkbox defaultChecked={false}/>}/>
                 </div>
                 {
                     location.pathname === '/articles' && <div>
@@ -69,15 +69,65 @@ const CardComponent = (props) => {
                                 </Link>
                             </p>
                             <p className={classes['text-email']}>{props.email}</p>
-                            <p className={classes['text-address']}>{props.address}</p>
+                            <p className={classes['text-address']}>{props.address}, {props.district}</p>
                             <p className={classes['text-phone']}>{props.phoneNumber}</p>
-                            <p className={classes['text-dist']}>{props.district.name}</p>
+                        </div>
+                    </div>
+                }
+                {
+                    location.pathname === '/arts' && <div>
+                        <div className={classes['arts-info']}>
+                            <p className={classes['text-name-arts']}>
+                                <Link to={`${location.pathname}/${props.id}`}>
+                                    {props.name}
+                                </Link>
+                            </p>
+                        </div>
+                    </div>
+                }
+                {
+                    location.pathname === '/tests' && <div>
+                        <div className={classes['tests-info']}>
+                            <p className={classes['text-name-tests']}>
+                                <Link to={`${location.pathname}/${props.id}`}>
+                                    {props.name}
+                                </Link>
+                            </p>
+                            <p className={classes['text-score']}>{props.score}</p>
+                            <p className={classes['text-dif']}>{props.dif}</p>
+                            <p className={classes['text-art']}>{props.art}</p>
+                        </div>
+                    </div>
+                }
+                {
+                    location.pathname === '/users' && <div>
+                        <div className={classes['users-info']}>
+                            <p className={classes['text-name-users']}>
+                                <Link to={`${location.pathname}/${props.id}`}>
+                                    {props.name}
+                                </Link>
+                            </p>
+                            <p className={classes['text-score']}>{props.score}</p>
+                            <p className={classes['text-email']}>{props.email}</p>
+                            <p className={classes['text-roles']}>{props.roles}</p>
+                        </div>
+                    </div>
+                }
+                {
+                    location.pathname === '/programs' && <div>
+                        <div className={classes['programs-info']}>
+                            <p className={classes['text-name-programs']}>
+                                <Link to={`${location.pathname}/${props.id}`}>
+                                    {props.name}
+                                </Link>
+                            </p>
                         </div>
                     </div>
                 }
 
+
                 <Link to={`${location.pathname}_edit/${props.id}`}>
-                    <CreateIcon style={{marginRight: '50px', marginLeft: '40px'}}/>
+                    <CreateIcon style={{marginRight: '50px', marginLeft: '70px'}}/>
                 </Link>
                 <DeleteIcon onClick={onClickDelete}/>
                 <div className={classes['bottom']}></div>

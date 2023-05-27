@@ -3,7 +3,6 @@
   flex-direction: column;
   max-width: 100%;
   align-content: center;
-  padding: 80px 0 0 200px;
 }
 
 .title {
@@ -18,15 +17,12 @@
 .first-row {
   display: flex;
   flex-direction: row;
-  column-gap: 100px;
-  justify-content: space-between;
-  max-width: 800px;
-  padding: 0 0 0 55px;
 }
 
 .second-row {
   display: flex;
   flex-direction: column;
+
 }
 
 .btn-row {
@@ -35,4 +31,17 @@
   align-items: center;
   justify-content: flex-start;
   padding: 0 0 40px 0;
+}
+
+.subtitle-name {
+  padding: 0 0 0 55px;
+  width: 265px;
+}
+
+.subtitle-email {
+  width: 295px;
+}
+
+.subtitle-ad {
+  width: 205px;
 }

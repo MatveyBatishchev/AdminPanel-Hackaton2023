@@ -1,0 +1,52 @@
+.main-wrapper {
+  display: flex;
+  flex-direction: column;
+  max-width: 100%;
+  align-content: center;
+}
+
+.title {
+  padding: 0 0 20px 0;
+}
+
+.content {
+  display: flex;
+  flex-direction: column;
+}
+
+.first-row {
+  display: flex;
+  flex-direction: row;
+}
+
+.second-row {
+  display: flex;
+  flex-direction: column;
+}
+
+
+
+.btn-row {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: flex-start;
+  padding: 0 0 40px 0;
+}
+
+.subtitle-name {
+  width: 500px;
+  padding: 0 0 0 55px;
+}
+
+.subtitle-desc {
+  width: 170px;
+}
+
+.subtitle-count {
+  width: 180px;
+}
+
+.subtitle-dif {
+  width: 200px;
+}

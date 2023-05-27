@@ -12,21 +12,24 @@
 }
 
 .text-name {
-  width: 230px;
-  padding: 0;
+  width: 240px;
+  padding: 0 20px 0 0;
   margin: 0;
 }
+
 
 .articles-info {
   display: flex;
   flex-direction: row;
   width: 100%;
+  align-items: center;
 }
 
 .schools-info {
   display: flex;
   flex-direction: row;
   column-gap: 30px;
+  align-items: center;
 }
 
 .categories-info {
@@ -38,14 +41,14 @@
 }
 
 .text-desc {
-  width: 270px;
+  width: 340px;
   padding: 0;
   margin: 0;
   text-align: start;
 }
 
 .text-type {
-  width: 215px;
+  width: 245px;
   padding: 0;
   margin: 0;
 }
@@ -55,9 +58,36 @@
 }
 
 .text-email {
-  width: 167px;
+  width: 280px;
 }
 
 .text-address {
-  width: 170px;
+  width: 180px;
+}
+
+.text-name-arts {
+  width: 900px;
+}
+
+.tests-info {
+  display: flex;
+  flex-direction: row;
+  width: 100%;
+  align-items: center;
+  column-gap: 20px;
+}
+
+.text-name-tests {
+  width: 480px;
+  padding: 0 40px 0 0;
+}
+
+.text-score {
+  width: 80px;
+  margin: 0 10px 0 0;
+}
+
+.text-dif {
+  text-align: center;
+  width: 150px;
 }

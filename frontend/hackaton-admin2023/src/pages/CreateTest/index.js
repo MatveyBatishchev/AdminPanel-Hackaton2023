@@ -66,7 +66,7 @@ const CreateTest = () => {
 
         useEffect(() => {
             axios
-                .get('http://localhost:8080/api/article_types')
+                .get('http://94.139.255.120/api/article_types')
                 .then(data => {
                     setAllTypes(data.data);
                     setArtType(data.data[0].id);

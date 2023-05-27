@@ -1,5 +1,5 @@
 .create-wrapper {
-  padding: 100px 0 0 200px;
+  padding: 100px 0 200px 200px;
 }
 
 .editor-container {
@@ -7,6 +7,8 @@
   align-self: start;
 }
 
-.codex-editor__redactor {
-  //padding: 0;
+
+.save-btn {
+  margin: 10px 0 10px 0;
+  padding: 5px;
 }

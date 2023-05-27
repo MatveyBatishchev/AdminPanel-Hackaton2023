@@ -12,7 +12,7 @@ const Category = () => {
 
     useEffect(() => {
         axios
-            .get(`http://localhost:8080/api/article_types/${id}`)
+            .get(`http://94.139.255.120/api/article_types/${id}`)
             .then(data => {
                 setData(data.data);
                 console.log(data.data);

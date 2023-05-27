@@ -18,9 +18,8 @@
   display: flex;
   flex-direction: row;
   column-gap: 100px;
-  justify-content: space-between;
-  max-width: 1000px;
-  padding: 0 0 0 55px;
+  max-width: 990px;
+
 }
 
 .second-row {
@@ -37,5 +36,20 @@
 }
 
 .subtitle-name {
-  width: 230px;
+  width: 200px;
+  padding: 0 0 0 55px;
+  font-weight: bold;
+}
+
+.subtitle-desc {
+  width: 235px;
+  font-weight: bold;
+}
+.subtitle-cat {
+  width: 130px;
+  font-weight: bold;
+}
+
+.subtitle-date {
+  font-weight: bold;
 }

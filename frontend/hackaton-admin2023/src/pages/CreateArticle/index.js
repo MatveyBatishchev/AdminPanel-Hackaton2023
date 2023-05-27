@@ -7,6 +7,7 @@ import classes from './style.module.scss';
 import axios from "axios";
 import ImageTool from '@editorjs/image'
 import queryString from 'query-string';
+import {upload} from "@testing-library/user-event/dist/upload";
 
 
 const CreateArticle = () => {
@@ -18,6 +19,8 @@ const CreateArticle = () => {
     const [content, setContent] = useState(null);
     const [arts, setArts] = useState(0);
     const [chosenArt, chooseArt] = useState([0]);
+    const [image, setImage] = useState('');
+    const [urlImage, setUrlImage] = useState(null);
 
     const change = useRef();
 
@@ -47,7 +50,7 @@ const CreateArticle = () => {
 
     useEffect(() => {
         axios
-            .get('http://localhost:8080/api/article_types')
+            .get('http://94.139.255.120/api/article_types')
             .then(data => {
                 setAllTypes(data.data);
                 setType(data.data[0].id);
@@ -56,7 +59,7 @@ const CreateArticle = () => {
 
     useEffect(() => {
         axios
-            .get('http://localhost:8080/api/arts')
+            .get('http://94.139.255.120/api/arts')
             .then(data => {
                 setArts(data.data);
                 chooseArt(data.data[0].id);
@@ -87,22 +90,41 @@ const CreateArticle = () => {
                     class: ImageTool,
                     config: {
                         endpoints: {
-                            byFile: 'http://localhost:8008/uploadFile', // Your backend file uploader endpoint
-                            byUrl: 'http://localhost:8008/fetchUrl', // Your endpoint that provides uploading by Url
+                            byFile: 'http://94.139.255.120/api/files', // Your backend file uploader endpoint
                         }
                     }
-                }
+                },
             },
         });
     }, []);
 
+    function saveArticleImage() {
+        var imagefile = document.querySelector('#image-chooser');
+        var formData = new FormData();
+        formData.append('file_entity_marker', 'ARTICLE');
+        formData.append("file", imagefile.files[0]);
+
+        axios.post('http://94.139.255.120/api/files', formData
+        )
+            .then(function (response) {
+                console.log(response);
+                let url = response.data.file.url;
+                if (url) {
+                    setUrlImage(url);
+                    console.log(url)
+                }
+            })
+            .catch(function (error) {
+                console.log(error);
+            });
+    }
 
     function saveInformation() {
         axios
-            .post('http://localhost:8080/api/articles', {
+            .post('http://94.139.255.120/api/articles', {
                 name: message,
                 description: null,
-                image: "",
+                image: urlImage,
                 published: true,
                 content: JSON.stringify(content),
                 articleType: {
@@ -118,7 +140,7 @@ const CreateArticle = () => {
                 console.log(typeof chosenArt);
                 axios({
                     method: "put",
-                    url: `http://localhost:8080/api/articles/${idArticle}/arts`,
+                    url: `http://94.139.255.120/api/articles/${idArticle}/arts`,
                     params: {
                         art_ids: chosenArt,
                     },
@@ -144,6 +166,7 @@ const CreateArticle = () => {
         <>
             <div className={`${classes['create-wrapper']} container`}>
                 <h1 className={classes['title']}>Добавление новой статьи</h1>
+                <p className={classes['subtitle']}>Выберите категорию статьи:</p>
                 <select ref={change} id="select" onChange={handleChangeType}>
                     {allTypes && allTypes.map(type => {
                         return (
@@ -152,6 +175,7 @@ const CreateArticle = () => {
                     })}
                 </select>
                 <div></div>
+                <p className={classes['subtitle']}>Выберите направление статьи:</p>
                 <select onChange={handleChangeArt}>
                     {arts && arts.map(art => {
                         return (
@@ -160,12 +184,15 @@ const CreateArticle = () => {
                     })
                     }
                 </select>
-                <h2 className={classes['subtitle']}>Название статьи:</h2>
+                <p className={classes['subtitle']}>Название статьи:</p>
                 <form>
                     <input className={classes['input']} type="text" name="name" placeholder="Название статьи"
                            onInput={handleChange} value={message}/>
+                    <p className={classes['subtitle']}>Содержание статьи:</p>
                     <div id="editorjs" className={classes['editor-container']}>
                     </div>
+                    <p className={classes['subtitle']}>Выгрузите фотографию для статьи: </p>
+                    <input type="file" name='image-chooser' id="image-chooser" accept="image/*" onInput={saveArticleImage}/>
                     <button className={classes['save-btn']} type="button" onClick={saveInformation}>Сохранить статью
                     </button>
                 </form>
