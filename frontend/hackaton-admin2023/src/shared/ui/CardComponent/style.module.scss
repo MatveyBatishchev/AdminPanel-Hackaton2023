@@ -91,3 +91,40 @@
   width: 200px;
   text-align: center;
 }
+
+.users-info {
+  display: flex;
+  flex-direction: row;
+  width: 100%;
+  align-items: center;
+  column-gap: 20px;
+}
+
+.text-name-users {
+  width: 180px;
+}
+
+.text-score {
+  width: 100px;
+  text-align: center;
+}
+
+.text-email-us {
+  width: 200px;
+  text-align: center;
+}
+
+.text-roles {
+  width: 150px;
+  text-align: center;
+}
+
+.programs-info {
+  display: flex;
+  flex-direction: row;
+  width: 100%;
+}
+
+.text-name-programs {
+  width: 800px;
+}

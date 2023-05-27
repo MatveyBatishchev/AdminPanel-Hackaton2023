@@ -107,7 +107,7 @@ const CardComponent = (props) => {
                                 </Link>
                             </p>
                             <p className={classes['text-score']}>{props.score}</p>
-                            <p className={classes['text-email']}>{props.email}</p>
+                            <p className={classes['text-email-us']}>{props.email}</p>
                             <p className={classes['text-roles']}>{props.roles}</p>
                         </div>
                     </div>

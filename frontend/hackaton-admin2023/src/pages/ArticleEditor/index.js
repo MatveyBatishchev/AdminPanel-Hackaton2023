@@ -19,6 +19,8 @@ const ArticleEditor = () => {
         const [allTypes, setAllTypes] = useState(null);
         const [content, setContent] = useState(null);
         const [image, setImage] = useState(null);
+        const [arts, setArts] = useState(0);
+        const [chosenArt, chooseArt] = useState([0]);
 
         const change = useRef();
 
@@ -26,6 +28,13 @@ const ArticleEditor = () => {
             setMessage(event.target.value);
             console.log('value is:', event.target.value);
         };
+
+        const handleChangeArt = event => {
+            let id = event.target.value;
+            let idInt = Number(id);
+            chooseArt([idInt]);
+
+        }
 
         const handleChangeType = event => {
             setType(event.target.value);
@@ -43,11 +52,22 @@ const ArticleEditor = () => {
 
         useEffect(() => {
             axios
+                .get('http://94.139.255.120/api/arts')
+                .then(data => {
+                    setArts(data.data);
+                    // chooseArt(data.data[0].id);
+                })
+        }, [])
+
+        useEffect(() => {
+            axios
                 .get(`http://94.139.255.120/api/articles/${id}`)
                 .then(data => {
                     setInfo(data.data);
                     setImage(data.data.image);
                     setType(data.data.articleType.id);
+                    chooseArt(data.data.arts.id);
+                    console.log(data.data.arts.id)
                     setTypeName(JSON.stringify(data.data.articleType.name))
                 })
         }, []);
@@ -125,6 +145,9 @@ const ArticleEditor = () => {
                         id: type,
                         name: ""
                     },
+                    art: {
+                        id: chosenArt,
+                    }
 
                 })
                 .then(function (response) {
@@ -159,6 +182,16 @@ const ArticleEditor = () => {
                                                     defaultValue={typeName}>{type.name}</option>
                                         )
                                     })}
+                                </select>
+                                <p className={classes['subtitle']}>Выберите новое направление статьи, если хотите изменить
+                                    его:</p>
+                                <select onChange={handleChangeArt}>
+                                    {arts && arts.map(art => {
+                                        return (
+                                            <option value={art.id} key={art.id}>{art.name}</option>
+                                        )
+                                    })
+                                    }
                                 </select>
                                 <h2 className={classes['subtitle']}>Название статьи:</h2>
                                 <form>

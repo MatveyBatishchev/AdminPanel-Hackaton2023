@@ -17,6 +17,8 @@
 .first-row {
   display: flex;
   flex-direction: row;
+  font-weight: bold;
+  padding: 10px 0 10px 0;
 }
 
 .second-row {
@@ -39,9 +41,9 @@
 }
 
 .subtitle-email {
-  width: 295px;
+  width: 310px;
 }
 
 .subtitle-ad {
-  width: 205px;
+  width: 200px;
 }

@@ -1,6 +1,6 @@
 import React, {useEffect, useState} from 'react';
 import axios from "axios";
-import classes from "../Categories/style.module.scss";
+import classes from "./style.module.scss";
 import CardComponent from "../../shared/ui/CardComponent";
 
 const Users = () => {
@@ -22,10 +22,10 @@ const Users = () => {
                 <h1 className={classes['title']}>Все пользователи</h1>
                 <div className={classes['content']}>
                     <div className={classes['first-row']}>
-                        <p className={classes['subtitle']}>Имя</p>
-                        <p className={classes['subtitle']}>Очки</p>
-                        <p className={classes['subtitle']}>Email</p>
-                        <p className={classes['subtitle']}>Роль</p>
+                        <p className={classes['subtitle-name']}>Имя</p>
+                        <p className={classes['subtitle-sc']}>Очки</p>
+                        <p className={classes['subtitle-em']}>Email</p>
+                        <p className={classes['subtitle-role']}>Роль</p>
                     </div>
                     {users && users.map(user => {
                         return (
