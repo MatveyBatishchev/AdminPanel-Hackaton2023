@@ -90,13 +90,15 @@ const CreateArticle = () => {
                     class: ImageTool,
                     config: {
                         endpoints: {
-                            byFile: 'http://94.139.255.120/api/files', // Your backend file uploader endpoint
+                            byFile: 'http://94.139.255.120/api/files', 
                         },
-                        additionalRequestData: {
-                            'file_entity_marker': 'ARTICLE',
-                        },
-                        additionalRequestHeaders: {
-                            'Content-Type': 'multipart/form-data',
+                        uploader: {
+                            uploadByFile(file) {
+                                var formData = new FormData();
+                                formData.append('file_entity_marker', 'ARTICLE');
+                                formData.append("file", file);
+                                return axios.post('http://94.139.255.120/api/files', formData).then(response => response.data)
+                            },
                         }
                     }
                 },
@@ -198,7 +200,8 @@ const CreateArticle = () => {
                     <div id="editorjs" className={classes['editor-container']}>
                     </div>
                     <p className={classes['subtitle']}>Выгрузите фотографию для статьи: </p>
-                    <input type="file" name='image-chooser' id="image-chooser" accept="image/*" onInput={saveArticleImage}/>
+                    <input type="file" name='image-chooser' id="image-chooser" accept="image/*"
+                           onInput={saveArticleImage}/>
                     <button className={classes['save-btn']} type="button" onClick={saveInformation}>Сохранить статью
                     </button>
                 </form>
