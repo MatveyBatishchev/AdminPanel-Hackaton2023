@@ -51,12 +51,10 @@ const QuestionComponent = (props) => {
 
     function questionTypeSelect(event) {
         setQuestionType(event.target.value);
-        console.log('value is:', event.target.value);
     }
 
     function answerTypeSelect(event) {
         setAnswerType(event.target.value);
-        console.log('value is:', event.target.value);
     }
 
     return (
@@ -64,7 +62,7 @@ const QuestionComponent = (props) => {
             <div className={classes['question-wrapper']}>
                 <div className={classes['first-row']}>
                     <p className={classes['question-number']}>{++number}</p>
-                    <input className={classes['text-input']} name={`text-quest-${number}`} id='question' placeholder='Текст вопроса'/>
+                    <input className={classes['text-input']} name={`text_quest_${number}`} id='question' placeholder='Текст вопроса'/>
                 </div>
                 <p className={classes['choose-question']}>Выберите тип вопроса:</p>
                 <select id="select-question" onChange={questionTypeSelect}>
@@ -90,7 +88,7 @@ const QuestionComponent = (props) => {
                     {
                         answerType.map(type => {
                             return (
-                                <option key={type.id} index={number} value={type.value}>{type.value}</option>
+                                <option key={type.id} id={type.id} value={type.value}>{type.value}</option>
                             )
                         })
 
@@ -98,12 +96,13 @@ const QuestionComponent = (props) => {
                 </select>
                 {
                     (aType ? (
-                            <AnswerType key={aType} value={aType}/>
+                            <AnswerType key={aType} index={number} value={aType}/>
                         ) :
                         (
                             <div></div>
                         ))
                 }
+                <input className={classes['text-input']} name={`text_exp_${number}`} id='explanation' placeholder='Объяснение к вопросу'/>
             </div>
         </>
     );

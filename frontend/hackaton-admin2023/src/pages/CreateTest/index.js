@@ -2,16 +2,19 @@ import React, {useEffect, useRef, useState} from 'react';
 import classes from './style.module.scss';
 import QuestionComponent from "../../shared/ui/QuestionComponent";
 import axios from "axios";
+import {useNavigate} from "react-router-dom";
 
 //TODO: сделать для сложности вывод на русском
 
 const CreateTest = () => {
 
-
-        // const [components, setComponents] = useState([]);
         const [inputs, setInputs] = useState([])
         const [amount, setAmount] = useState("")
         const [renderInputs, setRenderInputs] = useState(false);
+
+        const [questionName, setQuestionName] = useState(null);
+        const [questionDesc, setQuestionDesc] = useState(null);
+        const [questionScore, setQuestionScore] = useState(0);
 
         const [difficultyParams, setDifficulty] = useState("LITE");
 
@@ -20,11 +23,24 @@ const CreateTest = () => {
         const [artType, setArtType] = useState([0]);
         const [allTypes, setAllTypes] = useState(null);
 
-        useEffect(() => {
-            if (renderInputs) {
-                console.log(renderInputs)
-            }
-        }, [renderInputs])
+        const [questions, setQuestions] = useState([{}]);
+
+        let navigate = useNavigate();
+
+        function handleChangeScore(event) {
+            let score = event.target.value;
+            setQuestionScore(Number(score));
+        }
+
+        function handleChangeName(event) {
+            let name = event.target.value;
+            setQuestionName(name);
+        }
+
+        function handleChangeDesc(event) {
+            let desc = event.target.value;
+            setQuestionDesc(desc);
+        }
 
 
         const difficulty = [{
@@ -46,15 +62,119 @@ const CreateTest = () => {
         function saveAnswers(event) {
             event.preventDefault();
             let allData = new FormData(event.target);
+            // for (let allDatum of allData) {
+            //     let result_aud = allDatum[0].indexOf('audio');
+            //     let result_vid = allDatum[0].indexOf('video');
+            //     let result_img = allDatum[0].indexOf('image');
+            //     if (result_aud !==-1 || result_vid !== -1 || result_img !== -1) {
+            //         console.log(allDatum)
+            //         let source = new FormData()
+            //         source.append("file", allDatum[1]);
+            //         source.append('file_entity_marker', 'TEST')
+            //         axios.post('http://94.139.255.120/api/files', source
+            //         )
+            //             .then(function (response) {
+            //                 console.log(response);
+            //                 let url = response.data.file.url;
+            //                 if (url) {
+            //                     allDatum.push(url);
+            //                     console.log(url);
+            //                     console.log(allDatum);
+            //                 }
+            //             })
+            //             .catch(function (error) {
+            //                 console.log(error);
+            //             });
+            //     }
+            //     else {
+            //         console.log('Нет видео или аудио')
+            //     }
+            // }
+            //__________________КОНЕЦ РАБОЧЕГО КУСКА_____________________
+
+            const object = {questions: []}
             for (let allDatum of allData) {
-                
+                let result_quest = allDatum[0].split('_');
+                if (result_quest[0] === 'text' && result_quest[1] === 'quest') {
+                    const questId = result_quest[2];
+                    const question = {answers: []};
+                    question.text = allDatum[1];
+                    for (let fileDatum of allData) {
+                        let result_quest_f = fileDatum[0].split('_');
+                        if (result_quest_f[0] !== 'text' && result_quest_f[1] === 'quest' && result_quest_f[2] === questId) {
+                            if (result_quest_f[0] === 'audio') {
+                                question.audio = fileDatum[2];
+                            } else {
+                                question.audio = null;
+                            }
+                            if (result_quest_f[0] === 'video') {
+                                question.video = fileDatum[2];
+                            } else {
+                                question.video = null;
+                            }
+                            if (result_quest_f[0] === 'image') {
+                                question.image = fileDatum[2];
+                            } else {
+                                question.image = null;
+                            }
+                        }
+                    }
+                    for (let expDatum of allData) {
+                        let result_exp = expDatum[0].split('_');
+                        if (result_exp[0] === 'exp' && result_exp[2] === questId) {
+                            question.explanation = expDatum[1];
+                        }
+                    }
+                    for (let ansDatum of allData) {
+                        let result_answer = ansDatum[0].split('_');
+                        const answer = {}
+                        if (result_answer[2] === questId) {
+                            if (result_answer[3] === '1') {
+                                answer.isCorrect = true;
+                            } else {
+                                answer.isCorrect = false;
+                            }
+                            if (result_answer[0] === 'text') {
+                                answer.text = ansDatum[1];
+                            } else {
+                                answer.text = null;
+                            }
+                            if (result_answer[0] === 'audio') {
+                                answer.audio = ansDatum[2];
+                            } else {
+                                answer.audio = null;
+                            }
+                            if (result_answer[0] === 'video') {
+                                answer.video = ansDatum[2];
+                            } else {
+                                answer.video = null;
+                            }
+                            if (result_answer[0] === 'image') {
+                                answer.image = ansDatum[2];
+                            } else {
+                                answer.image = null;
+                            }
+                        }
+                        question.answers.push(answer);
+                    }
+                    object.questions.push(question);
+                }
             }
-            console.log(allData.get('answer_audio_1_1'));
+
+            object.title = questionName;
+            object.description = questionDesc;
+            object.image = "string";
+            object.scorePerQuestion = questionScore;
+            object.difficulty = difficultyParams;
+            object.art = {id: artType};
+            console.log(object);
+            navigate("/test")
+            window.location.reload();
         }
+
 
         function settingDifficulty(event) {
             setDifficulty(event.target.value);
-            console.log('value is:', event.target.value);
         }
 
         const handleChangeArt = event => {
@@ -78,11 +198,11 @@ const CreateTest = () => {
                 <div className={classes['test-wrapper']}>
                     <div className={classes['column']}></div>
                     <p className={classes['text']}>Название теста</p>
-                    <input placeholder="Название"/>
+                    <input placeholder="Название" onInput={handleChangeName}/>
                     <p className={classes['text']}>Описание теста</p>
-                    <input placeholder="Короткое описание"/>
+                    <input placeholder="Короткое описание" onInput={handleChangeDesc}/>
                     <p className={classes['text']}>Количество очков за тест:</p>
-                    <input placeholder="Максимальное количество очков за тест"/>
+                    <input placeholder="Максимальное количество очков за тест" onInput={handleChangeScore}/>
                     <p className={classes['text']}>Количество вопросов:</p>
                     <input onChange={(event) => setAmount(event.target.value)}
                            placeholder="Количество вопросов в тесте (цифрой или числом)"/>
