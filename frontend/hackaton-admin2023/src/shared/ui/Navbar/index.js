@@ -19,23 +19,31 @@ import ListItemText from '@mui/material/ListItemText';
 import InboxIcon from '@mui/icons-material/MoveToInbox';
 import MailIcon from '@mui/icons-material/Mail';
 import {Link} from "react-router-dom";
+import ChecklistIcon from '@mui/icons-material/Checklist';
+import GroupIcon from '@mui/icons-material/Group';
+import SchoolIcon from '@mui/icons-material/School';
+import QuizIcon from '@mui/icons-material/Quiz';
+import ArticleIcon from '@mui/icons-material/Article';
+import BrushIcon from '@mui/icons-material/Brush';
+import AbcIcon from '@mui/icons-material/Abc';
+
 
 const drawerWidth = 240;
 
 const MenuList = [{
     index: 0,
     text: 'Новости',
-    link: '/articles'
-},
+    link: '/articles',
+    },
     {
         index: 1,
         text: 'Категории',
-        link: '/categories'
+        link: '/categories',
     },
     {
         index: 2,
         text: 'Направления',
-        link: '/arts'
+        link: '/arts',
     },
     {
         index: 3,
@@ -55,9 +63,9 @@ const MenuList = [{
     {
         index: 6,
         text: 'Программы школ',
-        link: '/programs'
-    },
-    ];
+        link: '/programs',
+    },];
+
 
 const Main = styled('main', {shouldForwardProp: (prop) => prop !== 'open'})(
     ({theme, open}) => ({
@@ -161,7 +169,13 @@ export default function PersistentDrawerLeft() {
                                 <ListItem disablePadding>
                                     <ListItemButton>
                                         <ListItemIcon>
-                                            {item.index % 2 === 0 ? <InboxIcon/> : <MailIcon/>}
+                                            {item.index === 0 && <ArticleIcon/>}
+                                            {item.index === 1 && <ChecklistIcon/>}
+                                            {item.index === 2 && <BrushIcon/>}
+                                            {item.index === 3 && <SchoolIcon/>}
+                                            {item.index === 4 && <QuizIcon/>}
+                                            {item.index === 5 && <GroupIcon/>}
+                                            {item.index === 6 && <AbcIcon/>}
                                         </ListItemIcon>
                                         <ListItemText primary={item.text}/>
                                     </ListItemButton>

@@ -43,7 +43,7 @@ const Article = (props) => {
                         </>
                     ) :
                     (
-                        <h1 className={`${classes['loading']} container`}>Привет! Page is Loading</h1>
+                        <h1 className={`${classes['loading']} container`}>Пожалуйста, подождите. Страница загружается.</h1>
                     )
                 }
 

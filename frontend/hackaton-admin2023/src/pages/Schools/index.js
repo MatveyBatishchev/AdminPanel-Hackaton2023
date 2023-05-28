@@ -29,7 +29,7 @@ const Schools = () => {
                 <div className={classes['btn-row']}>
                     <AddCircleIcon style={{marginRight: '10px'}}/>
                     <Button variant="contained" color="success" className={classes['add']}><Link
-                        to={'/articles/add_article'}> Добавить школу</Link></Button>
+                        to={'/schools/add_school'}>Добавить школу</Link></Button>
                 </div>
                 <div className={classes['content']}>
                     <div className={classes['first-row']}>

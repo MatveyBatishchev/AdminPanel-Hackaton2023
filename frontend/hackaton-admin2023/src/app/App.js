@@ -18,7 +18,7 @@ import Arts from "../pages/Arts";
 import Users from "../pages/Users";
 import Programs from "../pages/Programs";
 import Districts from "../pages/Discricts";
-
+import AddSchool from "../pages/AddSchool";
 
 function App() {
     return (
@@ -38,6 +38,7 @@ function App() {
                 <Route path='/tests/create_test' element={<CreateTest />} />
                 <Route path='/schools' element={<Schools/>} />
                 <Route path='/schools/:id' element={<School />} />
+                <Route path='/schools/add_school' element={<AddSchool />} />
                 <Route path='/arts' element={<Arts />} />
                 <Route path='/users' element={<Users />}/>
                 <Route path='/programs' element={<Programs />} />

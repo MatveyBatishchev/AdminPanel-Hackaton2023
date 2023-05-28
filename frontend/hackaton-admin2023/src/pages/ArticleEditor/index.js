@@ -1,6 +1,6 @@
 import React, {useEffect, useRef, useState} from 'react';
 import axios from "axios";
-import {useParams} from "react-router-dom";
+import {useNavigate, useParams} from "react-router-dom";
 import classes from "./style.module.scss";
 import EditorJS from "@editorjs/editorjs";
 import Header from "@editorjs/header";
@@ -23,6 +23,9 @@ const ArticleEditor = () => {
         const [chosenArt, chooseArt] = useState([0]);
 
         const change = useRef();
+
+        let navigate = useNavigate();
+
 
         const handleChange = event => {
             setMessage(event.target.value);
@@ -117,7 +120,6 @@ const ArticleEditor = () => {
             var formData = new FormData();
             formData.append('file_entity_marker', 'ARTICLE');
             formData.append("file", imagefile.files[0]);
-
             axios.post('http://94.139.255.120/api/files', formData
             )
                 .then(function (response) {
@@ -166,7 +168,10 @@ const ArticleEditor = () => {
                     id: type,
                     name: ""
                 },
-            })
+            });
+            navigate("/articles")
+            window.location.reload();
+
         }
 
         return (

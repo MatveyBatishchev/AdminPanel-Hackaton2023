@@ -7,7 +7,7 @@ import classes from './style.module.scss';
 import axios from "axios";
 import ImageTool from '@editorjs/image'
 import queryString from 'query-string';
-import {upload} from "@testing-library/user-event/dist/upload";
+
 
 
 const CreateArticle = () => {
@@ -41,12 +41,6 @@ const CreateArticle = () => {
     const handleChangeType = event => {
         setType(event.target.value);
     }
-
-    useEffect(() => {
-        console.log(chosenArt);
-        console.log(typeof chosenArt);
-        console.log(Array.isArray(chosenArt))
-    }, [chosenArt])
 
     useEffect(() => {
         axios

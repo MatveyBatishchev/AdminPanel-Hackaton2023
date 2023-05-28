@@ -123,8 +123,6 @@ const CardComponent = (props) => {
                         </div>
                     </div>
                 }
-
-
                 <Link to={`${location.pathname}_edit/${props.id}`}>
                     <CreateIcon style={{marginRight: '50px', marginLeft: '70px'}}/>
                 </Link>

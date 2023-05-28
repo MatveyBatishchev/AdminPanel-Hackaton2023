@@ -13,10 +13,9 @@ const Welcome = () => {
                 <p className={classes['text']}><Link to={'/categories'}>Категории статей</Link></p>
                 <p className={classes['text']}><Link to={'/arts'}>Направления</Link></p>
                 <p className={classes['text']}><Link to={'/schools'}>Школы</Link></p>
-                <p className={classes['text']}><Link to={'/test'}>Тесты</Link></p>
+                <p className={classes['text']}><Link to={'/tests'}>Тесты</Link></p>
                 <p className={classes['text']}><Link to={'/users'}>Пользователи</Link></p>
                 <p className={classes['text']}><Link to={'/programs'}>Учебные программы школ</Link></p>
-                <p className={classes['text']}><Link to={'/districts'}>Округа</Link></p>
             </div>
         </>
     );
