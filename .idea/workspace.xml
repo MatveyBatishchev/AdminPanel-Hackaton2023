@@ -1,14 +1,8 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
-    <list default="true" id="80915420-948b-4d76-a062-56625b7eae6a" name="Changes" comment="">
-      <change beforePath="$PROJECT_DIR$/.github/Logo.png" beforeDir="false" afterPath="$PROJECT_DIR$/.github/assets/Logo.png" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.github/article_screen.png" beforeDir="false" afterPath="$PROJECT_DIR$/.github/assets/article_screen.png" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.github/courses_screen.png" beforeDir="false" afterPath="$PROJECT_DIR$/.github/assets/courses_screen.png" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.github/main_screen.png" beforeDir="false" afterPath="$PROJECT_DIR$/.github/assets/main_screen.png" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.github/schools_screen.png" beforeDir="false" afterPath="$PROJECT_DIR$/.github/assets/schools_screen.png" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.github/test_screen.png" beforeDir="false" afterPath="$PROJECT_DIR$/.github/assets/test_screen.png" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+    <list default="true" id="68aa5a5c-db79-495d-b571-303ee53c2235" name="Changes" comment="">
+      <change beforePath="$PROJECT_DIR$/README.md" beforeDir="false" afterPath="$PROJECT_DIR$/README.md" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -42,22 +36,22 @@
     <option name="hideEmptyMiddlePackages" value="true" />
     <option name="showLibraryContents" value="true" />
   </component>
-  <component name="PropertiesComponent"><![CDATA[{
-  "keyToString": {
-    "ASKED_ADD_EXTERNAL_FILES": "true",
-    "RunOnceActivity.OpenProjectViewOnStart": "true",
-    "RunOnceActivity.ShowReadmeOnStart": "true",
-    "WebServerToolWindowFactoryState": "false",
-    "javascript.nodejs.core.library.configured.version": "16.17.0",
-    "javascript.nodejs.core.library.typings.version": "16.18.32",
-    "last_opened_file_path": "D:/Hackaton/AdminPanel-Hackaton2023",
-    "list.type.of.created.stylesheet": "CSS",
-    "nodejs_package_manager_path": "npm",
-    "settings.editor.selected.configurable": "preferences.pluginManager",
-    "ts.external.directory.path": "D:\\Hackaton\\AdminPanel-Hackaton2023\\frontend\\hackaton2023-admin\\node_modules\\typescript\\lib",
-    "vue.rearranger.settings.migration": "true"
+  <component name="PropertiesComponent">{
+  &quot;keyToString&quot;: {
+    &quot;ASKED_ADD_EXTERNAL_FILES&quot;: &quot;true&quot;,
+    &quot;RunOnceActivity.OpenProjectViewOnStart&quot;: &quot;true&quot;,
+    &quot;RunOnceActivity.ShowReadmeOnStart&quot;: &quot;true&quot;,
+    &quot;WebServerToolWindowFactoryState&quot;: &quot;false&quot;,
+    &quot;javascript.nodejs.core.library.configured.version&quot;: &quot;16.17.0&quot;,
+    &quot;javascript.nodejs.core.library.typings.version&quot;: &quot;16.18.32&quot;,
+    &quot;last_opened_file_path&quot;: &quot;D:/Hackaton/AdminPanel-Hackaton2023&quot;,
+    &quot;list.type.of.created.stylesheet&quot;: &quot;CSS&quot;,
+    &quot;nodejs_package_manager_path&quot;: &quot;npm&quot;,
+    &quot;settings.editor.selected.configurable&quot;: &quot;preferences.pluginManager&quot;,
+    &quot;ts.external.directory.path&quot;: &quot;D:\\Hackaton\\AdminPanel-Hackaton2023\\frontend\\hackaton2023-admin\\node_modules\\typescript\\lib&quot;,
+    &quot;vue.rearranger.settings.migration&quot;: &quot;true&quot;
   }
-}]]></component>
+}</component>
   <component name="RecentsManager">
     <key name="MoveFile.RECENT_KEYS">
       <recent name="D:\Hackaton\AdminPanel-Hackaton2023\.github\assets" />

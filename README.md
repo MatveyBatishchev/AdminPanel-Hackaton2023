@@ -14,7 +14,7 @@
 * Ссылка на Google Drive с apk файлом: https://drive.google.com/drive/folders/1nUzq-y_xRmy-eyhU_t0Pw7G7tndwRmo7?usp=sharing
 * Ссылка на репозиторий с кодом для Backend (Spring Boot): https://github.com/MatveyBatishchev/Backend-Hackaton2023
 * Ссылка на репозиторий с кодом для Frontend (React Native): https://github.com/MatveyBatishchev/Frontend-Hackaton2023
-* Ссылка на репозиторий с кодом для админ-панели: https://github.com/MatveyBatishchev/AdminPanel-Hackaton2023
+* Ссылка на админ-панель: http://178.170.196.129/
 > Проекты были развёрнуты в облачном хранилище при помощи сервиса **SberCloud**
 
 ## Введение
