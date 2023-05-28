@@ -26,10 +26,10 @@ const ArticleEditor = () => {
         const [preChecked, setPreChecked] = useState([]);
 
 
-
         const change = useRef();
 
         let navigate = useNavigate();
+
 
         // useEffect(() => {
         //     let checked = false;
@@ -43,7 +43,6 @@ const ArticleEditor = () => {
         //
         //
         // }, [chosenArt, arts])
-
 
         const handleChange = event => {
             setMessage(event.target.value);
@@ -214,6 +213,7 @@ const ArticleEditor = () => {
             });
             navigate("/articles")
             window.location.reload();
+
         }
 
         return (

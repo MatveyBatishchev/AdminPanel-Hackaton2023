@@ -131,6 +131,7 @@ const CardComponent = (props) => {
                         </div>
                     </div>
                 }
+
                 {
                     location.pathname !== '/arts' && location.pathname !== '/categories' && <div>
                         <Link to={`${location.pathname}_edit/${props.id}`}>
@@ -148,7 +149,6 @@ const CardComponent = (props) => {
                         <DeleteIcon onClick={onClickDeleteCategory}/>
                     </div>
                 }
-
                 <div className={classes['bottom']}></div>
             </div>
         </>

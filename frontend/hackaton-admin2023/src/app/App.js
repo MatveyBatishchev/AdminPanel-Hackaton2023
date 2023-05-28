@@ -21,6 +21,7 @@ import AddSchool from "../pages/AddSchool";
 import AddCategory from "../pages/AddCategory";
 import AddArt from "../pages/AddArt";
 
+
 function App() {
     return (
         <>

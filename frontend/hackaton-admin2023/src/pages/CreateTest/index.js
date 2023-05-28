@@ -49,6 +49,7 @@ const CreateTest = () => {
             setQuestionDesc(desc);
         }
 
+
         const difficulty = [{
             id: 0,
             value: "LITE",
@@ -67,9 +68,13 @@ const CreateTest = () => {
 
         async function saveAnswers(event) {
             event.preventDefault();
+
             let isReady = false;
             // let imageReady = false;
             // let allData = new FormData(event.target);
+
+            //let allData = new FormData(event.target);
+
             // for (let allDatum of allData) {
             //     let result_aud = allDatum[0].indexOf('audio');
             //     let result_vid = allDatum[0].indexOf('video');
@@ -221,10 +226,32 @@ const CreateTest = () => {
 
         //__________________КОНЕЦ_____________________
 
+            //     if (result_aud !==-1 || result_vid !== -1 || result_img !== -1) {
+            //         console.log(allDatum)
+            //         let source = new FormData()
+            //         source.append("file", allDatum[1]);
+            //         source.append('file_entity_marker', 'TEST')
+            //         axios.post('http://94.139.255.120/api/files', source
+            //         )
+            //             .then(function (response) {
+            //                 console.log(response);
+            //                 let url = response.data.file.url;
+            //                 if (url) {
+            //                     allDatum.push(url);
+            //                     console.log(url);
+            //                     console.log(allDatum);
+            //                 }
+            //             })
+            //             .catch(function (error) {
+            //                 console.log(error);
+            //             });
+            //     }
+            //     else {
+            //         console.log('Нет видео или аудио')
+            //     }
+            // }
+            //__________________КОНЕЦ РАБОЧЕГО КУСКА_____________________
 
-        useEffect(() => {
-
-        }, [])
 
 
         function settingDifficulty(event) {
@@ -299,8 +326,7 @@ const CreateTest = () => {
                 </div>
             </>
         );
-    }
-;
+    };
 
 export default CreateTest;
 
