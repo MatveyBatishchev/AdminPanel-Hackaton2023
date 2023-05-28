@@ -105,7 +105,7 @@ const QuestionComponent = (props) => {
                             <div></div>
                         ))
                 }
-                <input className={classes['text-input']} name={`text_exp_${number}`} id='explanation'
+                <input className={classes['text-input']} name={`text_exp_${number}`}
                        placeholder='Объяснение к вопросу'/>
             </div>
         </>

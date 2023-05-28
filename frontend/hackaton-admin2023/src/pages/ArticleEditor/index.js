@@ -6,6 +6,7 @@ import EditorJS from "@editorjs/editorjs";
 import Header from "@editorjs/header";
 import Paragraph from "@editorjs/paragraph";
 import ImageTool from "@editorjs/image";
+import queryString from "query-string";
 
 const ArticleEditor = () => {
 
@@ -21,10 +22,27 @@ const ArticleEditor = () => {
         const [image, setImage] = useState(null);
         const [arts, setArts] = useState(0);
         const [chosenArt, chooseArt] = useState([0]);
+        const [articleDescription, setDescription] = useState('');
+        const [preChecked, setPreChecked] = useState([]);
+
+
 
         const change = useRef();
 
         let navigate = useNavigate();
+
+        // useEffect(() => {
+        //     let checked = false;
+        //     arts.map(art => (
+        //         {
+        //         checked = chosenArt.find(item => item.id === art.id)
+        //         if (checked) {
+        //             setPreChecked(checked)
+        //         }}
+        //     ))
+        //
+        //
+        // }, [chosenArt, arts])
 
 
         const handleChange = event => {
@@ -36,7 +54,10 @@ const ArticleEditor = () => {
             let id = event.target.value;
             let idInt = Number(id);
             chooseArt([idInt]);
+        }
 
+        const handleChangeDescription = event => {
+            setDescription(event.target.value);
         }
 
         const handleChangeType = event => {
@@ -58,7 +79,6 @@ const ArticleEditor = () => {
                 .get('http://94.139.255.120/api/arts')
                 .then(data => {
                     setArts(data.data);
-                    // chooseArt(data.data[0].id);
                 })
         }, [])
 
@@ -69,8 +89,9 @@ const ArticleEditor = () => {
                     setInfo(data.data);
                     setImage(data.data.image);
                     setType(data.data.articleType.id);
-                    chooseArt(data.data.arts.id);
-                    console.log(data.data.arts.id)
+                    chooseArt([data.data.arts.id]);
+                    console.log(chosenArt);
+                    setDescription(data.data.description);
                     setTypeName(JSON.stringify(data.data.articleType.name))
                 })
         }, []);
@@ -136,21 +157,43 @@ const ArticleEditor = () => {
         }
 
         function saveInformation() {
+            const checkboxes = document.getElementsByClassName('checkbox');
+            const checkboxesChecked = [];
+            for (let index = 0; index < checkboxes.length; index++) {
+                if (checkboxes[index].checked) {
+                    let idNumber = Number(checkboxes[index].value);
+                    checkboxesChecked.push(idNumber);
+                }
+            }
+            console.log(checkboxesChecked)
+
+            axios({
+                method: "put",
+                url: `http://94.139.255.120/api/articles/${id}/arts`,
+                params: {
+                    art_ids: checkboxesChecked,
+                },
+                paramsSerializer: params => {
+                    return queryString.stringify(params)
+                }
+            })
+                .then(function (response) {
+                    console.log(response);
+                })
+                .catch(function (error) {
+                    console.log(error);
+                });
             axios
                 .put(`http://94.139.255.120/api/articles/${id}`, {
                     name: message,
-                    description: null,
+                    description: articleDescription,
                     image: image,
                     published: true,
                     content: JSON.stringify(content),
                     articleType: {
                         id: type,
                         name: ""
-                    },
-                    art: {
-                        id: chosenArt,
                     }
-
                 })
                 .then(function (response) {
                     console.log(response);
@@ -171,7 +214,6 @@ const ArticleEditor = () => {
             });
             navigate("/articles")
             window.location.reload();
-
         }
 
         return (
@@ -190,18 +232,27 @@ const ArticleEditor = () => {
                                 </select>
                                 <p className={classes['subtitle']}>Выберите новое направление статьи, если хотите изменить
                                     его:</p>
-                                <select onChange={handleChangeArt}>
+                                <div>
                                     {arts && arts.map(art => {
                                         return (
-                                            <option value={art.id} key={art.id}>{art.name}</option>
+                                            <div key={art.id}>
+                                                <input
+                                                       className="checkbox" type="checkbox" value={art.id} id={art.id}
+                                                       name={art.name}/>
+                                                <label htmlFor={art.name}>{art.name}</label>
+                                            </div>
                                         )
                                     })
                                     }
-                                </select>
+                                </div>
                                 <h2 className={classes['subtitle']}>Название статьи:</h2>
                                 <form>
                                     <input className={classes['input']} type="text" name="name" placeholder="Название статьи"
                                            onInput={handleChange} value={message}/>
+                                    <p className={classes['subtitle']}>Описание статьи:</p>
+                                    <input className={classes['input']} type="text" name="description"
+                                           placeholder="Короткое описание статьи"
+                                           onInput={handleChangeDescription} value={articleDescription}/>
                                     <div id="editorjs" className={classes['editor-container']}>
                                     </div>
                                     <p className={classes['subtitle']}>Если хотите изменить фотографию,

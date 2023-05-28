@@ -45,9 +45,9 @@ const CreateTest = () => {
         }
 
         function handleChangeDesc(event) {
-        let desc = event.target.value;
-        setQuestionDesc(desc);
-    }
+            let desc = event.target.value;
+            setQuestionDesc(desc);
+        }
 
         const difficulty = [{
             id: 0,
@@ -65,118 +65,166 @@ const CreateTest = () => {
                 valueRu: "Высокая сложность"
             }]
 
-        function saveAnswers(event) {
+        async function saveAnswers(event) {
             event.preventDefault();
-            let allData = new FormData(event.target);
+            let isReady = false;
+            // let imageReady = false;
+            // let allData = new FormData(event.target);
             // for (let allDatum of allData) {
             //     let result_aud = allDatum[0].indexOf('audio');
             //     let result_vid = allDatum[0].indexOf('video');
             //     let result_img = allDatum[0].indexOf('image');
-            //     if (result_aud !==-1 || result_vid !== -1 || result_img !== -1) {
-            //         console.log(allDatum)
+            //     if (result_aud !== -1 || result_vid !== -1 || result_img !== -1) {
             //         let source = new FormData()
             //         source.append("file", allDatum[1]);
             //         source.append('file_entity_marker', 'TEST')
-            //         axios.post('http://94.139.255.120/api/files', source
-            //         )
-            //             .then(function (response) {
-            //                 console.log(response);
-            //                 let url = response.data.file.url;
-            //                 if (url) {
-            //                     allDatum.push(url);
-            //                     console.log(url);
-            //                     console.log(allDatum);
-            //                 }
-            //             })
-            //             .catch(function (error) {
-            //                 console.log(error);
-            //             });
-            //     }
-            //     else {
+            //         const response = await axios.post('http://94.139.255.120/api/files', source)
+            //         let url = response.data.file.url;
+            //         if (url) {
+            //             allDatum.push(url);
+            //         }
+            //     } else {
             //         console.log('Нет видео или аудио')
             //     }
+            //_____________ПРОВЕРКА___________________________________________________
+            //     console.log(allDatum)
+            //     for (let searchDatum of allData) {
+            //         console.log('enter')
+            //         let result_aud = searchDatum[0].indexOf('audio');
+            //         let result_vid = searchDatum[0].indexOf('video');
+            //         let result_img = searchDatum[0].indexOf('image');
+            //         console.log(result_img, result_aud, result_vid)
+            //         if (result_aud !== -1 || result_vid !== -1 || result_img !== -1) {
+            //             if (searchDatum[2] !== undefined)
+            //             {
+            //                 console.log('true')
+            //             }
+            //         }
+            //     }
             // }
-            //__________________КОНЕЦ РАБОЧЕГО КУСКА_____________________
-
-            const object = {questions: []}
-            for (let allDatum of allData) {
-                let result_quest = allDatum[0].split('_');
-                if (result_quest[0] === 'text' && result_quest[1] === 'quest') {
-                    const questId = result_quest[2];
-                    const question = {answers: []};
-                    question.text = allDatum[1];
-                    for (let fileDatum of allData) {
-                        let result_quest_f = fileDatum[0].split('_');
-                        if (result_quest_f[0] !== 'text' && result_quest_f[1] === 'quest' && result_quest_f[2] === questId) {
-                            if (result_quest_f[0] === 'audio') {
-                                question.audio = fileDatum[2];
-                            } else {
-                                question.audio = null;
-                            }
-                            if (result_quest_f[0] === 'video') {
-                                question.video = fileDatum[2];
-                            } else {
-                                question.video = null;
-                            }
-                            if (result_quest_f[0] === 'image') {
-                                question.image = fileDatum[2];
-                            } else {
-                                question.image = null;
-                            }
-                        }
-                    }
-                    for (let expDatum of allData) {
-                        let result_exp = expDatum[0].split('_');
-                        if (result_exp[0] === 'exp' && result_exp[2] === questId) {
-                            question.explanation = expDatum[1];
-                        }
-                    }
-                    for (let ansDatum of allData) {
-                        let result_answer = ansDatum[0].split('_');
-                        const answer = {}
-                        if (result_answer[2] === questId) {
-                            if (result_answer[3] === '1') {
-                                answer.isCorrect = true;
-                            } else {
-                                answer.isCorrect = false;
-                            }
-                            if (result_answer[0] === 'text') {
-                                answer.text = ansDatum[1];
-                            } else {
-                                answer.text = null;
-                            }
-                            if (result_answer[0] === 'audio') {
-                                answer.audio = ansDatum[2];
-                            } else {
-                                answer.audio = null;
-                            }
-                            if (result_answer[0] === 'video') {
-                                answer.video = ansDatum[2];
-                            } else {
-                                answer.video = null;
-                            }
-                            if (result_answer[0] === 'image') {
-                                answer.image = ansDatum[2];
-                            } else {
-                                answer.image = null;
-                            }
-                        }
-                        question.answers.push(answer);
-                    }
-                    object.questions.push(question);
-                }
-            }
-
-            object.title = questionName;
-            object.description = questionDesc;
-            object.image = "string";
-            object.scorePerQuestion = questionScore;
-            object.difficulty = difficultyParams;
-            object.art = {id: artType};
-            console.log(object);
-            navigate("/test")
-            window.location.reload();
+            //_______________КОНЕЦ ПРОВЕРКИ_______________________________________________
+            // imageReady = true;
+            // if (imageReady) {
+            //____________________РАБОЧИЙ КОД: СОЗДАНИЕ ОБЪЕКТА_____________________________
+            //     const object = {questions: []}
+            //     for (let allDatum of allData) {
+            //         let result_quest = allDatum[0].split('_');
+            //         if (result_quest[0] === 'text' && result_quest[1] === 'quest') {
+            //             const questId = result_quest[2];
+            //             const question = {answers: []};
+            //             question.text = allDatum[1];
+            //             for (let fileDatum of allData) {
+            //                 let result_quest_f = fileDatum[0].split('_');
+            //                 if (result_quest_f[0] !== 'text' && result_quest_f[1] === 'quest' && result_quest_f[2] === questId) {
+            //                     if (result_quest_f[0] === 'audio') {
+            //                         question.audio = fileDatum[2];
+            //                     } else {
+            //                         question.audio = null;
+            //                     }
+            //                     if (result_quest_f[0] === 'video') {
+            //                         question.video = fileDatum[2];
+            //                     } else {
+            //                         question.video = null;
+            //                     }
+            //                     if (result_quest_f[0] === 'image') {
+            //                         question.image = fileDatum[2];
+            //                     } else {
+            //                         question.image = null;
+            //                     }
+            //                 }
+            //             }
+            //             for (let expDatum of allData) {
+            //                 let result_exp = expDatum[0].split('_');
+            //                 if (result_exp[1] === 'exp' && result_exp[2] === questId) {
+            //                     question.explanation = expDatum[1];
+            //                 }
+            //             }
+            //             for (let ansDatum of allData) {
+            //                 let result_answer = ansDatum[0].split('_');
+            //                 const answer = {}
+            //                 if (result_answer[2] === questId && result_answer[1] === 'answer') {
+            //                     answer.isCorrect = result_answer[3] === '1';
+            //                     if (result_answer[0] === 'text') {
+            //                         answer.text = ansDatum[1];
+            //                     } else {
+            //                         answer.text = null;
+            //                     }
+            //                     if (result_answer[0] === 'audio') {
+            //                         answer.audio = ansDatum[2];
+            //                     } else {
+            //                         answer.audio = null;
+            //                     }
+            //                     if (result_answer[0] === 'video') {
+            //                         answer.video = ansDatum[2];
+            //                     } else {
+            //                         answer.video = null;
+            //                     }
+            //                     if (result_answer[0] === 'image') {
+            //                         answer.image = ansDatum[2];
+            //                     } else {
+            //                         answer.image = null;
+            //                     }
+            //                 }
+            //                 if (Object.keys(answer).length !== 0) {
+            //                     question.answers.push(answer);
+            //                 }
+            //
+            //             }
+            //             if (Object.keys(question).length !== 0) {
+            //                 object.questions.push(question);
+            //             }
+            //         }
+            //     }
+            //     object.title = questionName;
+            //     object.description = questionDesc;
+            //     object.image = "string";
+            //     object.scorePerQuestion = questionScore;
+            //     object.difficulty = difficultyParams;
+            //     object.art = {id: artType};
+            //     if (object.title !== null && object.description !== null && object.scorePerQuestion !== 0 && object.difficulty !== "") {
+            //         isReady = true;
+            //     }
+            //     if (isReady) {
+            //         console.log(object);
+            //         const response = await axios.post(`http://94.139.255.120/api/tests`, {object})
+            //         console.log(response);
+            // }
+            //_______________КОНЕЦ СОЗДАНИЯ ОБЪЕКТА__________________________-
         }
+
+        //_____________СТАРЫЕ ЗАПРОСЫ AXIOS__________________
+        // axios
+        //     .post(`http://94.139.255.120/api/tests`, {
+        //         object
+        //     })
+        //     .then((response) => {
+        //         console.log(response);
+        //     }).catch((err) => {
+        //     console.log(err);
+        // });
+        // }
+
+        // navigate("/test")
+        // window.location.reload();
+        // axios.post('http://94.139.255.120/api/files', source
+        // )
+        //     .then(function (response) {
+        //         console.log(response);
+        //         let url = response.data.file.url;
+        //         if (url) {
+        //             allDatum.push(url);
+        //         }
+        //     })
+        //     .catch(function (error) {
+        //         console.log(error);
+        //     });
+
+        //__________________КОНЕЦ_____________________
+
+
+        useEffect(() => {
+
+        }, [])
 
 
         function settingDifficulty(event) {

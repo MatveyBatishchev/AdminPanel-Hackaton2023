@@ -11,7 +11,7 @@ const CardComponent = (props) => {
     const location = useLocation();
 
     const formatDate = (date) => {
-        const options = Intl.DateTimeFormatOptions = { day: 'numeric', month: 'numeric', year: 'numeric',};
+        const options = Intl.DateTimeFormatOptions = {day: 'numeric', month: 'numeric', year: 'numeric',};
         return new Date(date).toLocaleDateString("ru-RU", options);
     }
 
@@ -19,6 +19,18 @@ const CardComponent = (props) => {
     function onClickDelete() {
         axios
             .delete(`http://94.139.255.120/api${location.pathname}/${props.id}`)
+            .then(function (response) {
+                console.log(response);
+                window.location.reload();
+            })
+            .catch(function (error) {
+                console.log(error);
+            });
+    }
+
+    function onClickDeleteCategory() {
+        axios
+            .delete(`http://94.139.255.120/api/article_types/${props.id}`)
             .then(function (response) {
                 console.log(response);
                 window.location.reload();
@@ -53,9 +65,7 @@ const CardComponent = (props) => {
                     location.pathname === '/categories' && <div>
                         <div className={classes['categories-info']}>
                             <p className={classes['text-name-cat']}>
-                                <Link to={`${location.pathname}/${props.id}`}>
                                     {props.name}
-                                </Link>
                             </p>
                         </div>
                     </div>
@@ -78,9 +88,7 @@ const CardComponent = (props) => {
                     location.pathname === '/arts' && <div>
                         <div className={classes['arts-info']}>
                             <p className={classes['text-name-arts']}>
-                                <Link to={`${location.pathname}/${props.id}`}>
                                     {props.name}
-                                </Link>
                             </p>
                         </div>
                     </div>
@@ -123,10 +131,24 @@ const CardComponent = (props) => {
                         </div>
                     </div>
                 }
-                <Link to={`${location.pathname}_edit/${props.id}`}>
-                    <CreateIcon style={{marginRight: '50px', marginLeft: '70px'}}/>
-                </Link>
-                <DeleteIcon onClick={onClickDelete}/>
+                {
+                    location.pathname !== '/arts' && location.pathname !== '/categories' && <div>
+                        <Link to={`${location.pathname}_edit/${props.id}`}>
+                            <CreateIcon style={{marginRight: '50px', marginLeft: '70px'}}/>
+                        </Link>
+                    </div>
+                }
+                {
+                    location.pathname !== '/categories' && <div>
+                        <DeleteIcon onClick={onClickDelete}/>
+                    </div>
+                }
+                {
+                    location.pathname === '/categories' && <div>
+                        <DeleteIcon onClick={onClickDeleteCategory}/>
+                    </div>
+                }
+
                 <div className={classes['bottom']}></div>
             </div>
         </>
