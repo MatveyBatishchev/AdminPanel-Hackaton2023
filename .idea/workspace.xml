@@ -1,0 +1,163 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="ChangeListManager">
+    <list default="true" id="80915420-948b-4d76-a062-56625b7eae6a" name="Changes" comment="">
+      <change afterPath="$PROJECT_DIR$/.github/Logo.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/.github/article_screen.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/.github/courses_screen.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/.github/main_screen.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/.github/schools_screen.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/.github/test_screen.png" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/README.md" beforeDir="false" afterPath="$PROJECT_DIR$/README.md" afterDir="false" />
+    </list>
+    <option name="SHOW_DIALOG" value="false" />
+    <option name="HIGHLIGHT_CONFLICTS" value="true" />
+    <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
+    <option name="LAST_RESOLUTION" value="IGNORE" />
+  </component>
+  <component name="FileTemplateManagerImpl">
+    <option name="RECENT_TEMPLATES">
+      <list>
+        <option value="JavaScript File" />
+        <option value="CSS File" />
+      </list>
+    </option>
+  </component>
+  <component name="Git.Settings">
+    <option name="RECENT_BRANCH_BY_REPOSITORY">
+      <map>
+        <entry key="$PROJECT_DIR$" value="haru" />
+      </map>
+    </option>
+    <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
+  </component>
+  <component name="MarkdownSettingsMigration">
+    <option name="stateVersion" value="1" />
+  </component>
+  <component name="ProjectId" id="2PnLHzhAqPoo5yTKT6vMKe3ddJ4" />
+  <component name="ProjectLevelVcsManager">
+    <ConfirmationsSetting value="2" id="Add" />
+  </component>
+  <component name="ProjectViewState">
+    <option name="hideEmptyMiddlePackages" value="true" />
+    <option name="showLibraryContents" value="true" />
+  </component>
+  <component name="PropertiesComponent"><![CDATA[{
+  "keyToString": {
+    "ASKED_ADD_EXTERNAL_FILES": "true",
+    "RunOnceActivity.OpenProjectViewOnStart": "true",
+    "RunOnceActivity.ShowReadmeOnStart": "true",
+    "WebServerToolWindowFactoryState": "false",
+    "javascript.nodejs.core.library.configured.version": "16.17.0",
+    "javascript.nodejs.core.library.typings.version": "16.18.32",
+    "last_opened_file_path": "D:/Hackaton/AdminPanel-Hackaton2023",
+    "list.type.of.created.stylesheet": "CSS",
+    "nodejs_package_manager_path": "npm",
+    "settings.editor.selected.configurable": "preferences.pluginManager",
+    "ts.external.directory.path": "D:\\Hackaton\\AdminPanel-Hackaton2023\\frontend\\hackaton2023-admin\\node_modules\\typescript\\lib",
+    "vue.rearranger.settings.migration": "true"
+  }
+}]]></component>
+  <component name="RecentsManager">
+    <key name="MoveFile.RECENT_KEYS">
+      <recent name="D:\Hackaton\AdminPanel-Hackaton2023\frontend\hackaton-admin2023\src\widgets" />
+      <recent name="D:\Hackaton\AdminPanel-Hackaton2023\frontend\hackaton-admin2023\src\pages" />
+      <recent name="D:\Hackaton\AdminPanel-Hackaton2023\frontend\hackaton-admin2023\src\shared\ui" />
+      <recent name="D:\Hackaton\AdminPanel-Hackaton2023\frontend\hackaton-admin2023\src" />
+      <recent name="D:\Hackaton\AdminPanel-Hackaton2023\frontend\hackaton-admin2023\app" />
+    </key>
+  </component>
+  <component name="RunManager" selected="npm.build">
+    <configuration name="build" type="js.build_tools.npm" temporary="true" nameIsGenerated="true">
+      <package-json value="$PROJECT_DIR$/frontend/hackaton2023-admin/package.json" />
+      <command value="run" />
+      <scripts>
+        <script value="build" />
+      </scripts>
+      <node-interpreter value="project" />
+      <envs />
+      <method v="2" />
+    </configuration>
+    <configuration name="eject" type="js.build_tools.npm" temporary="true" nameIsGenerated="true">
+      <package-json value="$PROJECT_DIR$/frontend/hackaton2023-admin/package.json" />
+      <command value="run" />
+      <scripts>
+        <script value="eject" />
+      </scripts>
+      <node-interpreter value="project" />
+      <envs />
+      <method v="2" />
+    </configuration>
+    <configuration name="start" type="js.build_tools.npm" temporary="true" nameIsGenerated="true">
+      <package-json value="$PROJECT_DIR$/frontend/hackaton2023-admin/package.json" />
+      <command value="run" />
+      <scripts>
+        <script value="start" />
+      </scripts>
+      <node-interpreter value="project" />
+      <envs />
+      <method v="2" />
+    </configuration>
+    <recent_temporary>
+      <list>
+        <item itemvalue="npm.build" />
+        <item itemvalue="npm.eject" />
+        <item itemvalue="npm.start" />
+      </list>
+    </recent_temporary>
+  </component>
+  <component name="SpellCheckerSettings" RuntimeDictionaries="0" Folders="0" CustomDictionaries="0" DefaultDictionary="application-level" UseSingleDictionary="true" transferred="true" />
+  <component name="TaskManager">
+    <task active="true" id="Default" summary="Default task">
+      <changelist id="80915420-948b-4d76-a062-56625b7eae6a" name="Changes" comment="" />
+      <created>1684087814584</created>
+      <option name="number" value="Default" />
+      <option name="presentableId" value="Default" />
+      <updated>1684087814584</updated>
+      <workItem from="1684087815922" duration="13665000" />
+      <workItem from="1684110881954" duration="439000" />
+      <workItem from="1684111342452" duration="11000" />
+      <workItem from="1684111743043" duration="868000" />
+      <workItem from="1684112946971" duration="481000" />
+      <workItem from="1684143610691" duration="4812000" />
+      <workItem from="1684169805727" duration="628000" />
+      <workItem from="1684432981602" duration="8940000" />
+      <workItem from="1684492383266" duration="87000" />
+      <workItem from="1684495534552" duration="10000" />
+      <workItem from="1684576221485" duration="21796000" />
+      <workItem from="1684658189251" duration="13856000" />
+      <workItem from="1684691950841" duration="7036000" />
+      <workItem from="1684745821502" duration="12230000" />
+      <workItem from="1684774963545" duration="9466000" />
+      <workItem from="1684832461140" duration="22058000" />
+      <workItem from="1684915510822" duration="17488000" />
+      <workItem from="1684948308598" duration="8441000" />
+      <workItem from="1684966728321" duration="1574000" />
+      <workItem from="1684971391299" duration="40000" />
+      <workItem from="1685005582922" duration="17860000" />
+      <workItem from="1685090500968" duration="21593000" />
+      <workItem from="1685120883541" duration="20349000" />
+      <workItem from="1685175297896" duration="11151000" />
+      <workItem from="1685188832192" duration="28974000" />
+      <workItem from="1685259114475" duration="26055000" />
+    </task>
+    <servers />
+  </component>
+  <component name="TypeScriptGeneratedFilesManager">
+    <option name="version" value="3" />
+  </component>
+  <component name="Vcs.Log.Tabs.Properties">
+    <option name="TAB_STATES">
+      <map>
+        <entry key="MAIN">
+          <value>
+            <State />
+          </value>
+        </entry>
+      </map>
+    </option>
+  </component>
+  <component name="VcsManagerConfiguration">
+    <option name="ADD_EXTERNAL_FILES_SILENTLY" value="true" />
+  </component>
+</project>
