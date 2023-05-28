@@ -26,6 +26,7 @@ const ArticleEditor = () => {
 
         let navigate = useNavigate();
 
+
         const handleChange = event => {
             setMessage(event.target.value);
             console.log('value is:', event.target.value);
@@ -170,6 +171,7 @@ const ArticleEditor = () => {
             });
             navigate("/articles")
             window.location.reload();
+
         }
 
         return (

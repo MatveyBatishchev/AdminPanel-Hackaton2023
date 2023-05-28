@@ -27,51 +27,45 @@ import ArticleIcon from '@mui/icons-material/Article';
 import BrushIcon from '@mui/icons-material/Brush';
 import AbcIcon from '@mui/icons-material/Abc';
 
+
 const drawerWidth = 240;
 
 const MenuList = [{
     index: 0,
     text: 'Новости',
     link: '/articles',
-
-},
+    },
     {
         index: 1,
         text: 'Категории',
         link: '/categories',
-
     },
     {
         index: 2,
         text: 'Направления',
         link: '/arts',
-
     },
     {
         index: 3,
         text: 'Школы',
         link: '/schools',
-
     },
     {
         index: 4,
         text: 'Тесты',
         link: '/tests',
-
     },
     {
         index: 5,
         text: 'Пользователи',
         link: '/users',
-
     },
     {
         index: 6,
         text: 'Программы школ',
         link: '/programs',
+    },];
 
-    },
-];
 
 const Main = styled('main', {shouldForwardProp: (prop) => prop !== 'open'})(
     ({theme, open}) => ({

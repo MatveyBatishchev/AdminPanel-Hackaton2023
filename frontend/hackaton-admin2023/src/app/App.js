@@ -20,7 +20,6 @@ import Programs from "../pages/Programs";
 import Districts from "../pages/Discricts";
 import AddSchool from "../pages/AddSchool";
 
-
 function App() {
     return (
         <>

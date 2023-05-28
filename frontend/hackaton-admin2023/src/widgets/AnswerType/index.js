@@ -38,6 +38,7 @@ const AnswerType = (props) => {
                     <input type="file" name={`image_answer_${props.index}_2`} />
                     <input type="file" name={`image_answer_${props.index}_3`} />
                     <input type="file" name={`image_answer_${props.index}_4`} />
+
                 </div>}
         </div>
     );

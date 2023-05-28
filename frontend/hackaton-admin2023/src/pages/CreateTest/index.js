@@ -4,17 +4,23 @@ import QuestionComponent from "../../shared/ui/QuestionComponent";
 import axios from "axios";
 import {useNavigate} from "react-router-dom";
 
+
 //TODO: сделать для сложности вывод на русском
 
 const CreateTest = () => {
+
+
+        // const [components, setComponents] = useState([]);
 
         const [inputs, setInputs] = useState([])
         const [amount, setAmount] = useState("")
         const [renderInputs, setRenderInputs] = useState(false);
 
+
         const [questionName, setQuestionName] = useState(null);
         const [questionDesc, setQuestionDesc] = useState(null);
         const [questionScore, setQuestionScore] = useState(0);
+
 
         const [difficultyParams, setDifficulty] = useState("LITE");
 
@@ -22,6 +28,7 @@ const CreateTest = () => {
 
         const [artType, setArtType] = useState([0]);
         const [allTypes, setAllTypes] = useState(null);
+
 
         const [questions, setQuestions] = useState([{}]);
 
@@ -38,10 +45,9 @@ const CreateTest = () => {
         }
 
         function handleChangeDesc(event) {
-            let desc = event.target.value;
-            setQuestionDesc(desc);
-        }
-
+        let desc = event.target.value;
+        setQuestionDesc(desc);
+    }
 
         const difficulty = [{
             id: 0,
