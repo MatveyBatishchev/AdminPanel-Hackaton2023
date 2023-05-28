@@ -21,6 +21,7 @@ const CreateArticle = () => {
     const [chosenArt, chooseArt] = useState([0]);
     const [image, setImage] = useState('');
     const [urlImage, setUrlImage] = useState(null);
+    const [articleDescription, setDescription] = useState('');
 
     const change = useRef();
 
@@ -30,6 +31,10 @@ const CreateArticle = () => {
     const handleChange = event => {
         setMessage(event.target.value);
     };
+
+    const handleChangeDescription = event => {
+        setDescription(event.target.value);
+    }
 
     const handleChangeArt = event => {
         let id = event.target.value;
@@ -84,7 +89,7 @@ const CreateArticle = () => {
                     class: ImageTool,
                     config: {
                         endpoints: {
-                            byFile: 'http://94.139.255.120/api/files', 
+                            byFile: 'http://94.139.255.120/api/files',
                         },
                         uploader: {
                             uploadByFile(file) {
@@ -122,10 +127,20 @@ const CreateArticle = () => {
     }
 
     function saveInformation() {
+
+        const checkboxes = document.getElementsByClassName('checkbox');
+        const checkboxesChecked = [];
+        for (let index = 0; index < checkboxes.length; index++) {
+            if (checkboxes[index].checked) {
+                let idNumber = Number(checkboxes[index].value);
+                checkboxesChecked.push(idNumber);
+            }
+        }
+
         axios
             .post('http://94.139.255.120/api/articles', {
                 name: message,
-                description: null,
+                description: articleDescription,
                 image: urlImage,
                 published: true,
                 content: JSON.stringify(content),
@@ -144,7 +159,7 @@ const CreateArticle = () => {
                     method: "put",
                     url: `http://94.139.255.120/api/articles/${idArticle}/arts`,
                     params: {
-                        art_ids: chosenArt,
+                        art_ids: checkboxesChecked,
                     },
                     paramsSerializer: params => {
                         return queryString.stringify(params)
@@ -178,18 +193,25 @@ const CreateArticle = () => {
                 </select>
                 <div></div>
                 <p className={classes['subtitle']}>Выберите направление статьи:</p>
-                <select onChange={handleChangeArt}>
+                <div>
                     {arts && arts.map(art => {
                         return (
-                            <option value={art.id} key={art.id}>{art.name}</option>
+                            <div key={art.id} >
+                                <input className="checkbox" type="checkbox" value={art.id}id={art.id}
+                                       name={art.name}/>
+                                <label htmlFor={art.name}>{art.name}</label>
+                            </div>
                         )
                     })
                     }
-                </select>
+                </div>
                 <p className={classes['subtitle']}>Название статьи:</p>
                 <form>
                     <input className={classes['input']} type="text" name="name" placeholder="Название статьи"
                            onInput={handleChange} value={message}/>
+                    <p className={classes['subtitle']}>Описание статьи:</p>
+                    <input className={classes['input']} type="text" name="description" placeholder="Короткое описание статьи"
+                           onInput={handleChangeDescription} value={articleDescription}/>
                     <p className={classes['subtitle']}>Содержание статьи:</p>
                     <div id="editorjs" className={classes['editor-container']}>
                     </div>

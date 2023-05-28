@@ -17,7 +17,7 @@ const Main = () => {
         axios
             .get(src, {
                 params: {
-                    per_page: 60
+                    per_page: 100
                 }
         })
             .then(data => {

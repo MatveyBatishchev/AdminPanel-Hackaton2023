@@ -88,7 +88,7 @@ const School = (props) => {
                     <h1 className={`${classes['loading']} container`}>Пожалуйста, подождите. Страница загружается.</h1>
                 )
                 }
-                <button className={classes['back-btn']}><Link to={'/schools'}>Вернуться назад</Link></button>
+                <button style={{padding: '5px', marginTop: '15px', width: '200px'}} className={classes['back-btn']}><Link to={'/schools'}>Вернуться назад</Link></button>
             </div>
         </>
     );

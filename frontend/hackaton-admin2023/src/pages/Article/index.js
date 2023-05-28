@@ -11,6 +11,7 @@ const Article = (props) => {
 
     const [articleData, setData] = useState(null);
     const [contentData, setContentData] = useState(null);
+    const [artData, setArtData] = useState(null);
 
     useEffect(() => {
         axios
@@ -25,6 +26,7 @@ const Article = (props) => {
         if (articleData) {
             let information = JSON.parse(articleData.content);
             setContentData(information);
+            setArtData(articleData.arts);
         }
     }, [articleData])
 
@@ -33,9 +35,20 @@ const Article = (props) => {
             <div className={`${classes['article-wrapper']} container`}>
                 {articleData ? (
                         <>
-
                             <h1 className={classes['title']}>{articleData.name}</h1>
-                            <h1 className={classes['subtitle']}>{articleData.desc}</h1>
+                            <div></div>
+                            <h3 className={classes['paragraph']}>Направления</h3>
+                                {artData && artData.map(art => {
+                                    return (
+                                        <p className={classes['subtitle']}>{art.name}</p>
+                                    )
+                                })
+                                }
+                            <h3 className={classes['subtitle']}>Категории: </h3>
+                            <p className={classes['subtitle']}> {articleData.articleType.name}</p>
+                            <h3 className={classes['subtitle']}>Описание статьи: </h3>
+                            <p className={classes['subtitle']}>{articleData.description}</p>
+                            <h3 className={classes['subtitle']}>Содержание: </h3>
                             <section><Output data={contentData}/></section>
                             <div className={classes['image-container']}>
                                 <img className={classes['article-image']} src={articleData.image}/>
