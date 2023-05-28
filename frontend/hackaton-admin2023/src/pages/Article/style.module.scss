@@ -1,0 +1,23 @@
+.title {
+  padding: 0 0 20px 0;
+}
+
+.loading {
+  display: none;
+}
+
+.back-btn {
+  padding: 5px 10px;
+  margin: 20px 0 0 0;
+}
+
+.article-image {
+  max-width: 1024px;
+  height: fit-content;
+}
+
+.image-container {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
