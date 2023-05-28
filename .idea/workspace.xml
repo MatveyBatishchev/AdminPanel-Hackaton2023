@@ -1,7 +1,11 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
-    <list default="true" id="68aa5a5c-db79-495d-b571-303ee53c2235" name="Changes" comment="" />
+    <list default="true" id="68aa5a5c-db79-495d-b571-303ee53c2235" name="Changes" comment="">
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/frontend/hackaton-admin2023/debug.log" beforeDir="false" afterPath="$PROJECT_DIR$/frontend/hackaton-admin2023/debug.log" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/frontend/hackaton-admin2023/src/shared/ui/Navbar/index.js" beforeDir="false" afterPath="$PROJECT_DIR$/frontend/hackaton-admin2023/src/shared/ui/Navbar/index.js" afterDir="false" />
+    </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
@@ -92,16 +96,18 @@
     </configuration>
     <recent_temporary>
       <list>
+        <item itemvalue="npm.start" />
+        <item itemvalue="npm.eject" />
+        <item itemvalue="npm.build" />
         <item itemvalue="npm.build" />
         <item itemvalue="npm.eject" />
-        <item itemvalue="npm.start" />
       </list>
     </recent_temporary>
   </component>
   <component name="SpellCheckerSettings" RuntimeDictionaries="0" Folders="0" CustomDictionaries="0" DefaultDictionary="application-level" UseSingleDictionary="true" transferred="true" />
   <component name="TaskManager">
     <task active="true" id="Default" summary="Default task">
-      <changelist id="80915420-948b-4d76-a062-56625b7eae6a" name="Changes" comment="" />
+      <changelist id="68aa5a5c-db79-495d-b571-303ee53c2235" name="Changes" comment="" />
       <created>1684087814584</created>
       <option name="number" value="Default" />
       <option name="presentableId" value="Default" />
@@ -132,6 +138,7 @@
       <workItem from="1685175297896" duration="11151000" />
       <workItem from="1685188832192" duration="28974000" />
       <workItem from="1685259114475" duration="26564000" />
+      <workItem from="1685303267297" duration="475000" />
     </task>
     <servers />
   </component>

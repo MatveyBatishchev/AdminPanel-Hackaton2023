@@ -26,6 +26,7 @@ import QuizIcon from '@mui/icons-material/Quiz';
 import ArticleIcon from '@mui/icons-material/Article';
 import BrushIcon from '@mui/icons-material/Brush';
 import AbcIcon from '@mui/icons-material/Abc';
+import {ClickAwayListener} from "@mui/material";
 
 
 const drawerWidth = 240;
@@ -143,6 +144,12 @@ export default function PersistentDrawerLeft() {
                     </Typography>
                 </Toolbar>
             </AppBar>
+            <ClickAwayListener
+                mouseEvent="onMouseDown"
+                touchEvent="onTouchStart"
+                open={open}
+                onClickAway={() => open && setOpen(false)}
+            >
             <Drawer
                 sx={{
                     width: drawerWidth,
@@ -165,10 +172,10 @@ export default function PersistentDrawerLeft() {
                 <List>
                     {MenuList.map(item => {
                         return (
-                            <Link to={item.link} key={item.text}>
+                            <Link to={item.link} key={item.text} onClick={handleDrawerClose}>
                                 <ListItem disablePadding>
                                     <ListItemButton>
-                                        <ListItemIcon>
+                                        <ListItemIcon onClick={handleDrawerClose}>
                                             {item.index === 0 && <ArticleIcon/>}
                                             {item.index === 1 && <ChecklistIcon/>}
                                             {item.index === 2 && <BrushIcon/>}
@@ -198,6 +205,7 @@ export default function PersistentDrawerLeft() {
                     ))}
                 </List>
             </Drawer>
+            </ClickAwayListener>
         </Box>
     );
 }
